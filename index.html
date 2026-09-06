@@ -8732,6 +8732,8 @@ function home() {
     } catch (e) {}
   if (location.hash.startsWith("#result=")) Net.clearUrl();
   game = null;
+  pendingStartFlow = null;
+  pendingCombatMode = null;
   captainDraft = { 1: null, 2: null };
   orderDraft = { 1: [], 2: [] };
   online.mode = "local";
@@ -8758,18 +8760,18 @@ function home() {
           vier Duelle gewinnt, holt das Match.
         </p>
         <div class="home-actions">
-          <button class="btn home-local" onclick="startLocal('classic')">
+          <button class="btn home-local" onclick="chooseCombatBeforeStart('local')">
             <span>🎮</span><b>AN EINEM GERÄT</b
             ><small>Abwechselnd spielen</small></button
-          ><button class="btn home-online" onclick="createRoom('classic')">
+          ><button class="btn home-online" onclick="chooseCombatBeforeStart('online')">
             <span>🌐</span><b>ONLINE SPIELEN</b
             ><small>Raum erstellen und Freund einladen</small></button
-          ><button class="btn home-show" onclick="showFightSetup('local')">
+          ><button class="btn home-show" onclick="chooseCombatBeforeStart('showLocal')">
             <span>🔥</span><b>SHOWFIGHT LOCAL</b
             ><small>Verse gegen Verse</small></button
           ><button
             class="btn home-show-online"
-            onclick="showFightSetup('host')"
+            onclick="chooseCombatBeforeStart('showOnline')"
           >
             <span>🌌</span><b>SHOWFIGHT ONLINE</b
             ><small>Verse gegen Verse · Online</small></button
@@ -8888,7 +8890,7 @@ function settingsHTML() {
       <div class="setting">
         <label>${L("Kampfmodus","Battle mode")}</label>
         <div style="margin-top:8px;font-weight:900">${L("Vor jedem Match auswählbar","Chosen before every match")}</div>
-        <small>${L("Classic (Story), Cardgame oder Cinematic werden nach Draft, Captain und Lineup ausgewählt.","Choose Classic (Story), Cardgame or Cinematic after draft, captain and lineup.")}</small>
+        <small>${L("Classic (Story), Cardgame oder Cinematic werden direkt beim Start jedes Spielmodus gewählt.","Choose Classic (Story), Cardgame or Cinematic immediately when starting any game mode.")}</small>
       </div>
       <div class="setting">
         <label>Power Cap</label
@@ -8982,7 +8984,48 @@ function bindSettings() {
   }
 }
 
-function startLocal(mode = "classic") {
+let pendingStartFlow = null;
+let pendingCombatMode = null;
+
+function combatModeName(mode) {
+  return mode === "classic" ? "Classic (Story)" : mode === "cinematic" ? "Cinematic" : "Cardgame";
+}
+
+function chooseCombatBeforeStart(flow) {
+  if (!["local", "online", "showLocal", "showOnline"].includes(flow)) return false;
+  pendingStartFlow = flow;
+  const modeLabel = {
+    local: L("AN EINEM GERÄT", "LOCAL"),
+    online: L("ONLINE SPIELEN", "ONLINE"),
+    showLocal: L("SHOWFIGHT LOCAL", "SHOWFIGHT LOCAL"),
+    showOnline: L("SHOWFIGHT ONLINE", "SHOWFIGHT ONLINE"),
+  }[flow];
+  modal(html`<button class="x" onclick="closeModal();pendingStartFlow=null">×</button>
+    <div class="kicker">NULL ARENA V3 · ${esc(modeLabel)}</div>
+    <h2>${L("Welchen Kampfmodus wollt ihr spielen?", "Which battle mode do you want to play?")}</h2>
+    <p>${L("Diese Auswahl gilt für das komplette Match und bleibt durch Draft, Captain, Lineup und Online-Lobby erhalten.", "This choice applies to the entire match and is preserved through draft, captain, lineup and the online lobby.")}</p>
+    <div class="battle-mode-grid pregame-mode-grid">
+      <button class="battle-mode-option story" onclick="confirmCombatBeforeStart('classic')"><span>📖</span><b>CLASSIC</b><strong>${L("STORY","STORY")}</strong><small>${L("Klassische Duelle mit Kampfgeschichte und TTS.","Classic duels with battle story and TTS.")}</small></button>
+      <button class="battle-mode-option cardgame" onclick="confirmCombatBeforeStart('cardgame')"><span>🃏</span><b>CARDGAME</b><strong>${L("TAKTIK","TACTICS")}</strong><small>${L("Active, Bank, Energy, Typen, Passives, Setup, Retreat und Revive.","Active, Bench, Energy, types, passives, setup, retreat and revive.")}</small></button>
+      <button class="battle-mode-option cinematic" onclick="confirmCombatBeforeStart('cinematic')"><span>🎬</span><b>CINEMATIC</b><strong>${L("AUTO-FIGHT","AUTO FIGHT")}</strong><small>${L("Automatisch berechneter Kampf mit cineastischer Präsentation.","Automatically resolved fight with cinematic presentation.")}</small></button>
+    </div>`);
+  return true;
+}
+
+function confirmCombatBeforeStart(combatMode) {
+  if (!["classic", "cardgame", "cinematic"].includes(combatMode) || !pendingStartFlow) return false;
+  const flow = pendingStartFlow;
+  pendingStartFlow = null;
+  pendingCombatMode = combatMode;
+  closeModal();
+  if (flow === "local") return startLocal("classic", combatMode);
+  if (flow === "online") return createRoom("classic", null, combatMode);
+  if (flow === "showLocal") return showFightSetup("local");
+  if (flow === "showOnline") return showFightSetup("host");
+  return false;
+}
+
+function startLocal(mode = "classic", combatMode = pendingCombatMode) {
   if (typeof battleState !== "undefined") {
     clearTimeout(battleState.timer);
     clearTimeout(battleState.ttsWatchdog);
@@ -8992,6 +9035,8 @@ function startLocal(mode = "classic") {
   stopTTS();
   settings.powerCap = $("#powerCap")?.value || settings.powerCap;
   game = newGame(mode);
+  game.combatMode = combatMode || "classic";
+  pendingCombatMode = game.combatMode;
   online = { mode: "local", role: 1, room: null, connected: false };
   if (mode === "classic") classicVerseSetup("local");
   else showFightSetup("local");
@@ -9128,6 +9173,7 @@ function showFightRandom(target) {
   closeModal();
   if (target === "local") {
     game = newGame("showfight");
+    game.combatMode = pendingCombatMode || "classic";
     online = { mode: "local", role: 1, room: null, connected: false };
     game.verse = { 1: a, 2: b };
     showVerseReveal(() => beginConfiguredGame());
@@ -9188,6 +9234,7 @@ function finishManual(a, b, target) {
   closeModal();
   if (target === "local") {
     game = newGame("showfight");
+    game.combatMode = pendingCombatMode || "classic";
     online = { mode: "local", role: 1, room: null, connected: false };
     game.verse = { 1: a, 2: b };
     showVerseReveal(() => beginConfiguredGame());
@@ -13787,6 +13834,7 @@ function packDraftState(forGuest = false) {
     version: game.version,
     seed: game.seed,
     mode: game.mode,
+    combatMode: game.combatMode || null,
     phase: game.phase,
     active: game.active,
     turnPicks: game.turnPicks,
@@ -13815,6 +13863,7 @@ function unpackDraftState(s) {
   const g = newGame(s.mode || 'classic');
   g.version = s.version || VERSION;
   g.seed = s.seed;
+  g.combatMode = s.combatMode || null;
   g.phase = s.phase;
   g.active = s.active;
   g.turnPicks = s.turnPicks || 0;
@@ -15139,8 +15188,8 @@ function renderBattleModeChoice() {
   const canChoose = online.mode === "local" || online.mode === "host";
   app.innerHTML = html`<section class="screen battle-mode-choice">
     <div class="card battle-mode-card">
-      <div class="kicker">NULL ARENA V3 · ${L("KAMPFMODUS","BATTLE MODE")}</div>
-      <h1>${L("Wie soll dieses Match gespielt werden?","How should this match be played?")}</h1>
+      <div class="kicker">NULL ARENA V3 · ${L("KAMPFMODUS NICHT GESETZT","BATTLE MODE NOT SET")}</div>
+      <h1>${L("Kampfmodus wählen","Choose battle mode")}</h1>
       <p>${L("Draft, Captain, Lineup, Online, TTS und Ergebnis bleiben gleich. Nur der Kampfablauf ändert sich.","Draft, captain, lineup, online, TTS and results stay the same. Only the battle flow changes.")}</p>
       ${canChoose ? html`<div class="battle-mode-grid">
         <button class="battle-mode-option story" onclick="chooseBattleExperience('classic')"><span>📖</span><b>CLASSIC</b><strong>${L("STORY","STORY")}</strong><small>${L("Die klassische Kampfgeschichte: komplette Duelle, TTS und Story im Vordergrund.","Classic battle stories with full duels, TTS and narrative focus.")}</small></button>
@@ -15205,9 +15254,11 @@ function startBattle() {
 
 
 /** Online-Lobby und benutzerlesbare Verbindungsanzeigen. */
-async function createRoom(mode = 'classic', verse = null) {
+async function createRoom(mode = 'classic', verse = null, combatMode = pendingCombatMode) {
   settings.powerCap = $('#powerCap')?.value || settings.powerCap;
   game = newGame(mode);
+  game.combatMode = combatMode || 'classic';
+  pendingCombatMode = game.combatMode;
   if (verse) game.verse = verse;
   game.phase = 'lobby';
   online = {
@@ -15226,6 +15277,7 @@ async function joinRoomByCode(codeOverride) {
   const code = String(codeOverride || $('#roomin')?.value || '').trim();
   if (!/^\d{6}$/.test(code)) return toast('6-stelligen Code eingeben.');
   closeModal();
+  pendingCombatMode = null;
   game = newGame('classic');
   game.phase = 'lobby';
   online = { mode: 'guest', role: 2, room: code, connected: false, transport: 'auto' };
