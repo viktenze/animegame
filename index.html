@@ -3444,21 +3444,66 @@ button {
 @keyframes handDeal{from{opacity:0;transform:translateY(25px) rotate(-3deg)}to{opacity:1;transform:none}}@keyframes cardReveal{from{opacity:0;transform:rotateY(95deg) scale(.8)}to{opacity:1;transform:none}}@keyframes clashPop{from{opacity:0;transform:scale(2)}to{opacity:1;transform:scale(1)}}@keyframes resultPop{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes winnerStrike{40%{transform:scale(1.06)}70%{transform:scale(.99)}}@keyframes hitShake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}@keyframes energyFill{from{opacity:.3;transform:scale(.6)}to{opacity:1;transform:none}}
 @media(max-width:600px){.duel-reveal{gap:10px}.reveal-card{min-width:0;flex:1;padding:16px 8px}.reveal-card b{font-size:22px}.hero-main .lede{font-size:16px}.home-actions{grid-template-columns:1fr!important}.modal .reveal-grid{grid-template-columns:1fr 1fr;min-width:0}.modal .select{min-width:0}.topbar .brand{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.duel-reveal *,.duel-outcome,.duel-choosing .hybrid-card,.duel-resolved .hybrid-fighters article,.energy-pips i{animation:none!important}}
+/* ===== NULL ARENA V3 TCG BOARD ===== */
+#langBtn{width:auto;min-width:58px;padding:0 10px;font-weight:950;font-size:11px;letter-spacing:.08em}
+.tcg-shell{max-width:1320px}.tcg-topline{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:14px}.tcg-topline h1{margin:5px 0 0;font-size:clamp(34px,5vw,64px)}
+.tcg-type-strip,.tcg-stadium,.tcg-turn-banner,.tcg-turn-tools,.tcg-support-card,.tcg-promote-note{border:1px solid var(--border);background:linear-gradient(145deg,#10182b,#080d18);border-radius:16px;padding:13px 16px;margin:10px 0}.tcg-type-strip{display:flex;justify-content:space-between;gap:12px;align-items:center}.tcg-type-strip>span{font-weight:950;letter-spacing:.02em}.tcg-type-strip small{color:var(--muted);text-align:right}.tcg-stadium{display:flex;align-items:center;justify-content:center;gap:12px;border-color:rgba(255,216,107,.26);background:radial-gradient(circle at 50% 0,rgba(255,216,107,.12),transparent 60%),#0b111f}.tcg-stadium span{color:#c7d1e2;font-size:12px}
+.tcg-turn-banner{display:flex;justify-content:space-between;align-items:center;gap:12px;border-left:4px solid var(--p1)}.tcg-turn-banner.p2{border-left-color:var(--p2)}.tcg-turn-banner b{font-size:15px}.tcg-turn-banner span{color:#b9c6da;font-size:12px}
+.tcg-board{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}.tcg-side{border:1px solid var(--border);border-radius:24px;padding:15px;background:linear-gradient(160deg,rgba(15,24,43,.97),rgba(6,10,18,.98));box-shadow:0 22px 70px rgba(0,0,0,.28)}.tcg-side.opponent{background:linear-gradient(200deg,rgba(39,16,35,.55),rgba(7,10,18,.98))}.tcg-side.player{background:linear-gradient(20deg,rgba(11,34,46,.55),rgba(7,10,18,.98))}.tcg-player-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:10px}.tcg-player-head>div:first-child{display:flex;gap:10px;align-items:baseline}.tcg-player-head small{color:var(--muted)}.tcg-captain-aura{max-width:620px;padding:8px 11px;border-radius:12px;border:1px solid #3a4356;background:#0b1120;display:flex;gap:10px;align-items:center}.tcg-captain-aura.on{border-color:#8a7134;box-shadow:0 0 24px rgba(255,216,107,.09)}.tcg-captain-aura.off{opacity:.45}.tcg-captain-aura span{font-weight:900;white-space:nowrap}.tcg-captain-aura small{line-height:1.35}
+.tcg-active-zone{display:grid;place-items:center;position:relative;min-height:450px;padding:28px 8px 8px;background:radial-gradient(circle at 50% 42%,rgba(112,128,255,.08),transparent 45%);border-radius:20px}.tcg-zone-label{position:absolute;top:8px;left:12px;font-size:9px;font-weight:1000;letter-spacing:.18em;color:#718099}.tcg-bench{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:10px;position:relative;padding-top:22px}.tcg-reserve,.tcg-ko{margin-top:9px;border-top:1px solid rgba(255,255,255,.06);padding-top:8px}.tcg-reserve summary,.tcg-ko summary{cursor:pointer;color:#aebbd0;font-size:11px;font-weight:850}.tcg-reserve>div,.tcg-ko>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:9px}.tcg-empty,.tcg-empty-slot{border:1px dashed #344057;border-radius:15px;display:grid;place-items:center;color:#56657b;background:#080d17}.tcg-empty{width:min(420px,90%);min-height:220px}.tcg-empty-slot{min-height:120px;font-size:24px}
+.tcg-char-card{--tcg-accent:#7a8aa8;width:min(390px,100%);border:2px solid color-mix(in srgb,var(--tcg-accent) 62%,#293349);border-radius:20px;background:linear-gradient(155deg,color-mix(in srgb,var(--tcg-accent) 12%,#121a2c),#070b14 72%);overflow:hidden;box-shadow:0 16px 55px rgba(0,0,0,.35);position:relative;transition:transform .16s,border-color .16s,box-shadow .16s}.tcg-char-card:hover{transform:translateY(-3px);box-shadow:0 22px 65px rgba(0,0,0,.42)}.tcg-char-card.captain:after{content:"♛";position:absolute;right:9px;top:40px;font-size:24px;color:#ffd86b;text-shadow:0 0 16px #ffd86b66}.tcg-char-card.type-force{--tcg-accent:#ff6d79}.tcg-char-card.type-guard{--tcg-accent:#6dd8ff}.tcg-char-card.type-rush{--tcg-accent:#ffe069}.tcg-char-card.type-arcane{--tcg-accent:#bf83ff}.tcg-rarity-row{display:flex;justify-content:space-between;padding:8px 11px;background:rgba(0,0,0,.28);font-size:9px;font-weight:950;letter-spacing:.07em}.tcg-card-art{height:205px;background:#050913;display:grid;place-items:center;overflow:hidden}.tcg-card-art img{width:100%;height:100%;object-fit:contain}.tcg-card-body{padding:12px}.tcg-card-body h3{font-size:22px;line-height:1;margin:1px 0 5px}.tcg-card-body>small{color:var(--muted)}.tcg-hp{margin:10px 0 7px;display:grid;gap:4px;font-size:10px;font-weight:900}.tcg-hp i{height:6px;border-radius:99px;background:#252d3b;overflow:hidden}.tcg-hp i b{display:block;height:100%;background:var(--tcg-accent);box-shadow:0 0 10px color-mix(in srgb,var(--tcg-accent) 70%,transparent)}.tcg-energy-row{display:flex;align-items:center;gap:8px;font-size:10px}.tcg-energy-row b{color:#ffd86b;letter-spacing:2px}.tcg-energy-row small{margin-left:auto}.tcg-statline{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:10px 0}.tcg-statline span{font-size:8px;padding:6px 3px;border-radius:8px;text-align:center;background:#070c16;color:#9ba9bf}.tcg-statline b{display:block;font-size:13px;color:#fff}.tcg-statline.large span{font-size:10px;padding:9px}.tcg-statline.large b{font-size:17px}.tcg-ability{border:1px solid color-mix(in srgb,var(--tcg-accent) 35%,#2e3a4c);background:color-mix(in srgb,var(--tcg-accent) 7%,#090f1a);border-radius:11px;padding:9px;margin-top:8px}.tcg-ability>b{font-size:10px;color:color-mix(in srgb,var(--tcg-accent) 78%,white)}.tcg-ability p{font-size:10px;line-height:1.4;margin:5px 0 0;color:#c3cee0}.tcg-card-meta{display:grid;gap:4px;margin-top:8px;font-size:8px;color:#99a7bb}.tcg-card-meta.big{font-size:11px;grid-template-columns:repeat(3,1fr);gap:10px}.tcg-card-actions{display:flex;gap:6px;margin-top:9px}.tcg-mini-btn{border:1px solid #36445e;background:#0e1728;color:#e6edf8;border-radius:8px;padding:6px 8px;font-size:8px;font-weight:900}.tcg-mini-btn.energy{color:#ffd86b;border-color:#685b35}.tcg-mini-btn.promote{color:#72f2b1;border-color:#31654a}.tcg-char-card.compact{width:100%;border-radius:14px}.tcg-char-card.compact .tcg-card-art{height:120px}.tcg-char-card.compact .tcg-card-body{padding:8px}.tcg-char-card.compact .tcg-card-body h3{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tcg-char-card.compact .tcg-hp{margin:6px 0}.tcg-char-card.compact .tcg-energy-row{font-size:8px}.tcg-char-card.compact .tcg-rarity-row{font-size:7px;padding:6px}.tcg-char-card.ko{filter:saturate(.35);opacity:.7}.tcg-char-card.ko .tcg-card-art{filter:grayscale(.5)}
+.tcg-center-line{display:flex;align-items:center;justify-content:center;height:20px;position:relative}.tcg-center-line:before,.tcg-center-line:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#39465e)}.tcg-center-line:after{background:linear-gradient(90deg,#39465e,transparent)}.tcg-center-line span{padding:0 16px;font-weight:1000;color:#66758c}
+.tcg-attacks{margin-top:12px;border-top:1px solid rgba(255,255,255,.07);padding-top:11px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.tcg-section-title{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:10px}.tcg-section-title>span{font-size:10px;font-weight:1000;letter-spacing:.16em}.tcg-section-title small{color:var(--muted)}.tcg-attack{display:grid;grid-template-columns:auto 1fr auto;gap:6px 8px;text-align:left;align-items:center;border:1px solid #37445a;border-radius:13px;padding:11px;background:#0b1220;color:#fff}.tcg-attack:not(:disabled):hover{border-color:#6dd8ff;transform:translateY(-2px)}.tcg-attack:disabled{opacity:.42}.tcg-attack-cost{color:#ffd86b;letter-spacing:1px;font-size:10px}.tcg-attack>b{font-size:12px}.tcg-attack>strong{font-size:18px}.tcg-attack>small,.tcg-attack>p{grid-column:1/-1;margin:0;color:#aebbd0;font-size:9px;line-height:1.35}
+.tcg-turn-tools{display:flex;justify-content:space-between;align-items:center}.tcg-turn-tools>div{display:flex;flex-direction:column}.tcg-turn-tools small{color:var(--muted)}.tcg-turn-tools details{min-width:min(460px,100%)}.tcg-turn-tools summary{cursor:pointer;font-weight:900}.tcg-switch-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.tcg-switch-list button,.tcg-revive-options button{border:1px solid #3a465a;background:#0b1321;color:#eaf0fb;border-radius:9px;padding:8px 10px}.tcg-switch-list button:disabled,.tcg-revive-options button:disabled{opacity:.35}.tcg-support-card{border-color:#615234;background:linear-gradient(140deg,#2a2214,#0c111c);display:grid;grid-template-columns:1fr 1fr;gap:14px}.tcg-support-card.used{opacity:.5}.tcg-support-card h3{margin:3px 0}.tcg-support-card p{color:#c7c1ae;font-size:11px}.tcg-revive-options{display:flex;gap:7px;flex-wrap:wrap;align-content:center}.tcg-revive-options button{display:flex;gap:9px;align-items:center}.tcg-revive-options span{color:#ffd86b}.tcg-promote-note{text-align:center;border-color:#37624b;color:#bdf4d3}.tcg-status{text-align:center;color:#a9b7ca}
+.tcg-ko-reveal{text-align:center;padding:28px;border:1px solid #5e4931;background:radial-gradient(circle at 50% 0,rgba(255,216,107,.16),transparent 60%),#0c111b;border-radius:24px;margin:16px 0}.tcg-ko-badge{font-size:clamp(46px,9vw,100px);font-weight:1000;letter-spacing:-.05em;color:#ffd86b;text-shadow:0 0 32px rgba(255,216,107,.3)}.tcg-ko-reveal h2{font-size:clamp(24px,4vw,44px);margin:4px 0}.tcg-ko-reveal p{max-width:900px;margin:12px auto;line-height:1.65;color:#d0d7e4}.tcg-last-hit{display:inline-flex;gap:18px;padding:9px 14px;border:1px solid #514936;border-radius:99px;background:#17160f}.tcg-last-hit span{color:#ffd86b;font-weight:900}
+.tcg-inspect{--tcg-accent:#7a8aa8}.tcg-inspect.type-force{--tcg-accent:#ff6d79}.tcg-inspect.type-guard{--tcg-accent:#6dd8ff}.tcg-inspect.type-rush{--tcg-accent:#ffe069}.tcg-inspect.type-arcane{--tcg-accent:#bf83ff}.tcg-inspect-head{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:center}.tcg-inspect-head img{width:180px;height:220px;object-fit:contain;background:#050913;border-radius:16px;border:1px solid #344057}.tcg-inspect-head h2{font-size:34px;margin:4px 0}.tcg-inspect-attacks{display:grid;gap:8px;margin-top:12px}.tcg-inspect-attacks>div{display:grid;grid-template-columns:auto 1fr auto;gap:7px 10px;border:1px solid #37445a;background:#090f1b;border-radius:12px;padding:12px}.tcg-inspect-attacks small,.tcg-inspect-attacks p{grid-column:1/-1;margin:0;color:#aebbd0;font-size:10px}
+@media(max-width:900px){.tcg-player-head{flex-direction:column}.tcg-captain-aura{max-width:none;width:100%}.tcg-active-zone{min-height:420px}.tcg-attacks{grid-template-columns:1fr}.tcg-support-card{grid-template-columns:1fr}.tcg-type-strip{flex-direction:column;align-items:flex-start}.tcg-type-strip small{text-align:left}.tcg-card-meta.big{grid-template-columns:1fr}.tcg-turn-tools{flex-direction:column;align-items:stretch;gap:8px}}
+@media(max-width:650px){.tcg-shell{width:min(100% - 10px,1320px)}.tcg-topline{align-items:center}.tcg-topline h1{font-size:30px}.tcg-side{padding:9px;border-radius:17px}.tcg-active-zone{min-height:360px;padding-top:25px}.tcg-char-card{max-width:330px}.tcg-card-art{height:180px}.tcg-bench,.tcg-reserve>div,.tcg-ko>div{gap:5px}.tcg-char-card.compact .tcg-card-art{height:84px}.tcg-char-card.compact .tcg-card-body h3{font-size:10px}.tcg-char-card.compact .tcg-energy-row span{display:none}.tcg-char-card.compact .tcg-rarity-row span:first-child{display:none}.tcg-captain-aura{font-size:9px}.tcg-captain-aura small{font-size:8px}.tcg-turn-banner{align-items:flex-start;flex-direction:column}.tcg-inspect-head{grid-template-columns:110px 1fr}.tcg-inspect-head img{width:110px;height:150px}.tcg-inspect-head h2{font-size:24px}}
+
+.tcg-turn-buttons{display:flex;gap:8px;align-items:center;justify-content:flex-end}.tcg-end-turn{border:1px solid #53627a;background:#111a2b;color:#eef4ff;border-radius:10px;padding:9px 12px;font-weight:900}.tcg-end-turn:disabled{opacity:.35}
+
+/* ===== V3 CARDGAME clarity + mode selection ===== */
+.battle-mode-card{padding:34px;max-width:1000px;margin:auto}.battle-mode-card h1{font-size:clamp(38px,6vw,72px);margin:8px 0}.battle-mode-card>p{color:#b8c4d8;max-width:720px;line-height:1.6}.battle-mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.battle-mode-option{border:1px solid var(--border);background:linear-gradient(150deg,#111a2e,#080d18);color:#fff;border-radius:20px;padding:22px;text-align:left;min-height:220px;transition:.18s}.battle-mode-option:hover{transform:translateY(-5px);border-color:#6dd8ff;box-shadow:0 20px 60px rgba(0,0,0,.35)}.battle-mode-option>span{font-size:32px;display:block}.battle-mode-option b,.battle-mode-option strong{display:block}.battle-mode-option b{font-size:24px;margin-top:12px}.battle-mode-option strong{color:var(--gold);font-size:11px;letter-spacing:.16em;margin:4px 0 12px}.battle-mode-option small{color:#aebbd0;line-height:1.5}.battle-mode-wait{margin-top:24px;padding:24px;border:1px dashed #45536a;border-radius:16px;text-align:center;color:#c8d3e4}
+.classic-story-duel{display:grid;grid-template-columns:1fr 90px 1fr;align-items:center;gap:12px}.classic-story-duel article{height:320px;border:1px solid var(--border);border-radius:20px;overflow:hidden;background:#080d18;position:relative}.classic-story-duel img{width:100%;height:100%;object-fit:contain}.classic-story-duel b{position:absolute;left:0;right:0;bottom:0;padding:35px 12px 12px;background:linear-gradient(transparent,#03060d)}.classic-story-vs{text-align:center;font-size:32px;font-weight:1000}.classic-story-copy{margin:14px 0}.classic-story-copy p{white-space:pre-line}
+.tcg-active-zone{min-height:330px;padding-top:25px}.tcg-char-card{width:min(315px,100%)}.tcg-card-art{height:150px}.tcg-card-body h3{font-size:18px}.tcg-char-card.compact .tcg-card-art{height:76px}.tcg-char-card.compact .tcg-card-body{padding:7px}.tcg-char-card.compact .tcg-hp{font-size:8px}.tcg-char-card.compact .tcg-card-actions{margin-top:5px}.tcg-side{padding:12px}.tcg-player-head{margin-bottom:6px}.tcg-type-strip{padding:9px 12px;margin:7px 0}.tcg-stadium{padding:9px 12px;margin:7px 0}.tcg-turn-banner{padding:10px 12px;margin:7px 0}.tcg-board{gap:8px;margin-top:8px}.tcg-center-line{height:12px}.tcg-bench{margin-top:7px}.tcg-reserve,.tcg-ko{margin-top:6px}
+.tcg-char-card.matchup-up{border-color:#62f0a4}.tcg-char-card.matchup-down{border-color:#ff6c82}.tcg-type-match{display:inline-flex;align-items:center;gap:5px}.tcg-type-match b{font-size:17px;line-height:1}.tcg-type-match.up b{color:#62f0a4;text-shadow:0 0 10px #62f0a466}.tcg-type-match.down b{color:#ff6c82;text-shadow:0 0 10px #ff6c8266}.tcg-type-match.neutral b{color:#8492a8}.tcg-matchup-tip{position:absolute;right:8px;top:34px;z-index:20;max-width:230px;padding:8px 10px;border-radius:9px;background:#050913eF;border:1px solid #46536a;color:#e9f1ff;font-size:9px;line-height:1.4;opacity:0;transform:translateY(-4px);pointer-events:none;transition:.15s}.tcg-char-card:hover .tcg-matchup-tip{opacity:1;transform:none}.tcg-matchup-tip.up{border-color:#4d9f74}.tcg-matchup-tip.down{border-color:#a94d60}
+.tcg-setup-row{position:relative;display:flex;gap:6px;flex-wrap:wrap;padding:24px 8px 8px;margin-top:8px;border:1px dashed #34425a;border-radius:13px;background:#070c16}.tcg-setup-row>.tcg-zone-label{top:7px}.tcg-setup-chip{max-width:260px;border:1px solid #344057;background:#0d1525;border-radius:9px;padding:6px 8px;display:grid;gap:2px}.tcg-setup-chip b{font-size:8px}.tcg-setup-chip small{font-size:7px;color:#94a4ba;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tcg-no-setup{color:#65758c;font-size:8px}.tcg-captain-command{border:1px solid #776332;background:#241d0e;color:#ffe194;border-radius:9px;padding:8px 10px;font-weight:950;font-size:9px}.tcg-captain-command:disabled{opacity:.3}.tcg-turn-buttons{flex-wrap:wrap}
+@media(max-width:900px){.battle-mode-grid{grid-template-columns:1fr}.battle-mode-option{min-height:0}.tcg-active-zone{min-height:300px}.tcg-char-card{width:min(300px,100%)}.classic-story-duel article{height:240px}}
+@media(max-width:650px){.battle-mode-card{padding:20px}.classic-story-duel{grid-template-columns:1fr 42px 1fr}.classic-story-duel article{height:190px}.tcg-active-zone{min-height:285px}.tcg-card-art{height:135px}.tcg-char-card.compact .tcg-card-art{height:64px}.tcg-setup-chip{max-width:100%}}
+
 </style>
     
     <script async src="https://js.puter.com/v2/"></script>
   </head>
   <body>
     <header class="topbar">
-      <button class="brand" id="homeBtn">NULL ARENA <span>V3.0.0</span></button>
+      <button class="brand" id="homeBtn">NULL ARENA <span>V3</span></button>
       <div class="top-actions">
-        <button class="icon" id="rulesBtn">?</button><button class="icon" id="soundBtn">🎙</button>
+        <button class="icon" id="langBtn" title="Deutsch / English">DE</button><button class="icon" id="rulesBtn">?</button><button class="icon" id="soundBtn">🎙</button>
       </div>
     </header>
     <main id="app"></main>
     <div id="modalRoot"></div>
     <div class="toast" id="toast"></div>
-  <script id="null-arena-game">/** data/roster.js — Franchises, Figurenprofile und Bildzuordnungen */
+  <script id="null-arena-game">/** V3 bilingual UI helper. Existing game data stays untouched. */
+let uiLang = localStorage.getItem("null-arena-v3-lang") === "en" ? "en" : "de";
+function L(de,en){ return uiLang === "en" ? en : de; }
+function setLanguage(lang){
+  uiLang = lang === "en" ? "en" : "de";
+  localStorage.setItem("null-arena-v3-lang", uiLang);
+  document.documentElement.lang = uiLang;
+  const b = document.getElementById("langBtn"); if (b) b.textContent = uiLang.toUpperCase();
+  stopTTS?.();
+  if (typeof route === "function" && game) route(); else if (typeof home === "function") home();
+}
+function toggleLanguage(){ setLanguage(uiLang === "de" ? "en" : "de"); }
+function localizedSceneText(s, short=false){
+  if (!s) return "";
+  if (typeof tcgSceneText === "function" && (s.textDe || s.textEn || s.shortDe || s.shortEn)) return tcgSceneText(s,short);
+  return short ? (s.shortText || s.text || "") : (s.aiText || s.text || "");
+}
+document.documentElement.lang = uiLang;
+/** data/roster.js — Franchises, Figurenprofile und Bildzuordnungen */
 const VERSE_ROSTERS = {
   'One Punch Man': [
     'Saitama',
@@ -8798,9 +8843,9 @@ function settingsHTML() {
     ["mystery", "Mystery Box", "Neuer Secret-Pick, Gegner sieht ???."],
     ["double", "Risiko-Pick", "50 % stärkere Figur, 50 % schwächere. Einmal pro Match."],
     ["trade", "Trade", "Nach Pick 4 einmal austauschen."],
-    ["captain", "Captain", "Kleiner Bonus für deinen Anführer."],
-    ["lineup", "Lineup", "Priorität 1–7 festlegen."],
-    ["revive", "Revive", "Einmal zwischen Duellen eine besiegte Figur zurückholen."],
+    ["captain", "Captain", "Taktische Klassen-Aura für deinen Anführer."],
+    ["lineup", "Lineup", "Active, Bank und Reserve 1–7 festlegen."],
+    ["revive", "Revive", "Cardgame: einmal eine KO-Karte mit Energy zurückholen."],
     ["events", "Arena Events", "Map-spezifische Modifikatoren."],
     [
       "bestOf3",
@@ -8841,13 +8886,9 @@ function settingsHTML() {
     </div>
     <div class="settings">
       <div class="setting">
-        <label for="battleFormat">Kampfstil</label
-        ><select id="battleFormat">
-          <option value="hybrid">Karten + kurze Erzählung</option>
-          <option value="auto">Cinematic Auto-Fight</option></select
-        ><small
-          >Die ursprüngliche automatische Simulation bleibt auswählbar.</small
-        >
+        <label>${L("Kampfmodus","Battle mode")}</label>
+        <div style="margin-top:8px;font-weight:900">${L("Vor jedem Match auswählbar","Chosen before every match")}</div>
+        <small>${L("Classic (Story), Cardgame oder Cinematic werden nach Draft, Captain und Lineup ausgewählt.","Choose Classic (Story), Cardgame or Cinematic after draft, captain and lineup.")}</small>
       </div>
       <div class="setting">
         <label>Power Cap</label
@@ -9921,8 +9962,8 @@ function renderCaptain() {
   app.innerHTML = html`<section class="screen">
     <div class="phase">
       <div>
-        <h1>Captain wählen</h1>
-        <p>Eine Karte anklicken, sichtbares Highlight prüfen und erst dann bestätigen.</p>
+        <h1>${L("Captain wählen","Choose Captain")}</h1>
+        <p>${L("Der Captain ist jetzt eine taktische Entscheidung: Seine Klassen-Aura wirkt nur, solange er Active oder auf der Bank ist.","Captain is now a tactical choice: its class aura works only while it is Active or on the Bench.")}</p>
       </div>
       <span class="pill ${p === 1 ? 'p1c' : 'p2c'}">PLAYER ${p === 1 ? 'ONE' : 'TWO'}</span>
     </div>
@@ -9940,7 +9981,7 @@ function renderCaptain() {
                 onclick="event.stopPropagation();refreshArt('${c.id}','capimg-${p}-${i}')"
                 >↻ ART</span
               >
-              <div><b>${esc(c.name)}</b><small>${c.role} · ${c.tier}</small></div>
+              <div><b>${esc(c.name)}</b><small>${tcgTypeText(tcgType(c))} · ${c.tier}</small><small style="display:block;margin-top:5px;line-height:1.35">${esc(uiLang==='en'?tcgCaptainAuraInfo(c).en:tcgCaptainAuraInfo(c).de)}</small></div>
             </button>`,
         )
         .join('')}
@@ -9951,7 +9992,7 @@ function renderCaptain() {
         ${selected && canAct(p) ? '' : 'disabled'}
         onclick="confirmCaptain(${p})"
       >
-        👑 CAPTAIN BESTÄTIGEN
+        👑 ${L("CAPTAIN BESTÄTIGEN","CONFIRM CAPTAIN")}
       </button>
     </div>
   </section>`;
@@ -10006,11 +10047,8 @@ function renderOrder() {
   app.innerHTML = html`<section class="screen">
     <div class="phase">
       <div>
-        <h1>Lineup 1–${TEAM_SIZE}</h1>
-        <p>
-          Reihenfolge auswählen. Markierte Karten bleiben sichtbar nummeriert; erst mit BESTÄTIGEN
-          wird synchronisiert.
-        </p>
+        <h1>${L("Lineup 1–${TEAM_SIZE}","Lineup 1–${TEAM_SIZE}")}</h1>
+        <p>${L("Position 1 startet als Active, 2–4 bilden deine Bank, 5–7 die Reserve. Damit entscheidet die Reihenfolge jetzt taktisch über Opening, Captain-Aura und Synergien.","Position 1 starts Active, 2–4 form your Bench and 5–7 are Reserve. The order now controls your opening, Captain aura and synergies.")}</p>
       </div>
       <span class="pill ${p === 1 ? 'p1c' : 'p2c'}"
         >PLAYER ${p === 1 ? 'ONE' : 'TWO'} · ${draft.length}/${TEAM_SIZE}</span
@@ -10040,13 +10078,13 @@ function renderOrder() {
         .join('')}
     </div>
     <div class="lineup-actions">
-      <button class="btn secondary" onclick="resetOrderDraft(${p})">↺ ZURÜCKSETZEN</button
+      <button class="btn secondary" onclick="resetOrderDraft(${p})">↺ ${L("ZURÜCKSETZEN","RESET")}</button
       ><button
         class="btn gold"
         ${draft.length === TEAM_SIZE && canAct(p) ? '' : 'disabled'}
         onclick="confirmOrder(${p})"
       >
-        ✓ LINEUP BESTÄTIGEN
+        ✓ ${L("LINEUP BESTÄTIGEN","CONFIRM LINEUP")}
       </button>
     </div>
   </section>`;
@@ -12509,7 +12547,7 @@ function fullStoryText() {
   return (game?.result?.scenes || [])
     .map(
       (s, i) =>
-        `${i + 1}. ${s.title}. ${cleanNarrationText(s.aiText || s.text)}`,
+        `${i + 1}. ${uiLang === "en" && s.titleEn ? s.titleEn : uiLang === "de" && s.titleDe ? s.titleDe : s.title}. ${cleanNarrationText(s.aiText || localizedSceneText(s,false))}`,
     )
     .join("\n\n");
 }
@@ -12522,13 +12560,13 @@ function speakFullStory() {
   stopTTS();
   const token = ++fullStorySpeakToken,
     parts = game.result.scenes
-      .map((s) => cleanNarrationText(s.aiText || s.text))
+      .map((s) => cleanNarrationText(s.aiText || localizedSceneText(s,false)))
       .filter(Boolean);
   let i = 0;
   const next = () => {
     if (token !== fullStorySpeakToken) return;
     if (i >= parts.length) {
-      toast("Story komplett vorgelesen.");
+      toast(L("Story komplett vorgelesen.","Full story finished."));
       return;
     }
     narrateBlock(parts[i++], next);
@@ -12573,22 +12611,22 @@ function renderResult() {
         </button>`;
   app.innerHTML = html`<section class="screen">
     <div class="result-hero-v2">
-      <div class="result-kicker">OFFICIAL MATCH RESULT</div>
+      <div class="result-kicker">${L("OFFIZIELLES MATCH-ERGEBNIS","OFFICIAL MATCH RESULT")}</div>
       <div class="result-score-big p${r.winner}">
         PLAYER ${r.winner === 1 ? "ONE" : "TWO"}
       </div>
-      <h2>GEWINNT ${r.wins1}:${r.wins2}</h2>
+      <h2>${L("GEWINNT","WINS")} ${r.wins1}:${r.wins2}</h2>
       <p class="result-sub">
         MVP: <b>${esc(r.mvp.name)}</b> · ${kos.length} dokumentierte
         Eliminierungen
       </p>
       <div class="actions" style="justify-content:center">
         <button class="btn gold" onclick="speakFullStory()">
-          🎙️ STORY VORLESEN</button
+          🎙️ ${L("STORY VORLESEN","READ STORY")}</button
         ><button class="btn secondary" onclick="replayBattle()">
-          🎬 CINEMATIC REPLAY</button
+          🎬 ${L("CINEMATIC REPLAY","CINEMATIC REPLAY")}</button
         ><button class="btn secondary" onclick="shareResult()">
-          🔗 ERGEBNIS TEILEN</button
+          🔗 ${L("ERGEBNIS TEILEN","SHARE RESULT")}</button
         >${rematch}<button class="btn secondary" onclick="home()">
           ⌂ HOME
         </button>
@@ -12619,13 +12657,13 @@ function renderResult() {
     </div>
     <div class="result-grid">
       <div class="story">
-        <h3>⚔️ Vollständige Kampfgeschichte</h3>
+        <h3>⚔️ ${L("Vollständige Kampfgeschichte","Full Battle Story")}</h3>
         ${r.scenes
           .map(
             (s, i) =>
               html`<div class="v23-story-chapter">
                 <b>${String(i + 1).padStart(2, "0")} · ${esc(s.title)}</b>
-                <p>${esc(cleanNarrationText(s.aiText || s.text))}</p>
+                <p>${esc(cleanNarrationText(s.aiText || localizedSceneText(s,false)))}</p>
               </div>`,
           )
           .join("")}
@@ -13695,8 +13733,14 @@ function packScene(s) {
     defenderP: s.defenderP,
     effect: s.effect,
     text: s.text,
+    textDe: s.textDe || null,
+    textEn: s.textEn || null,
+    titleDe: s.titleDe || null,
+    titleEn: s.titleEn || null,
     duel: s.duel || null,
     shortText: s.shortText || null,
+    shortDe: s.shortDe || null,
+    shortEn: s.shortEn || null,
     aiText: s.aiText || null,
     aiMoves: s.aiMoves || null,
     moves: s.moves || null,
@@ -15058,7 +15102,7 @@ function unpackGameState(s) {
 }
 
 function handleGuestAction(a, p = {}) {
-  if (a === "hybridChoose" || a === "hybridNext" || a === "hybridSwap" || a === "hybridRevive")
+  if (["hybridAttach","hybridAttack","hybridEnd","hybridCaptain","hybridRetreat","hybridPromote","hybridRevive","hybridNext"].includes(a))
     return handleHybridAction(a, p, 2);
   if (a === "battleMove") {
     if (
@@ -15075,11 +15119,11 @@ function handleGuestAction(a, p = {}) {
 }
 
 function handleAction(a, p = {}) {
-  if (a === "hybridChoose" || a === "hybridNext" || a === "hybridSwap" || a === "hybridRevive")
+  if (["hybridAttach","hybridAttack","hybridEnd","hybridCaptain","hybridRetreat","hybridPromote","hybridRevive","hybridNext"].includes(a))
     return handleHybridAction(
       a,
       p,
-      online.mode === "local" ? game.hybrid?.pickPlayer : online.role,
+      online.mode === "local" ? (game.hybrid?.turn || 1) : online.role,
     );
   if (a === "battleMove") {
     const who =
@@ -15091,21 +15135,68 @@ function handleAction(a, p = {}) {
   return handleDraftAction(a, p);
 }
 
+function renderBattleModeChoice() {
+  const canChoose = online.mode === "local" || online.mode === "host";
+  app.innerHTML = html`<section class="screen battle-mode-choice">
+    <div class="card battle-mode-card">
+      <div class="kicker">NULL ARENA V3 · ${L("KAMPFMODUS","BATTLE MODE")}</div>
+      <h1>${L("Wie soll dieses Match gespielt werden?","How should this match be played?")}</h1>
+      <p>${L("Draft, Captain, Lineup, Online, TTS und Ergebnis bleiben gleich. Nur der Kampfablauf ändert sich.","Draft, captain, lineup, online, TTS and results stay the same. Only the battle flow changes.")}</p>
+      ${canChoose ? html`<div class="battle-mode-grid">
+        <button class="battle-mode-option story" onclick="chooseBattleExperience('classic')"><span>📖</span><b>CLASSIC</b><strong>${L("STORY","STORY")}</strong><small>${L("Die klassische Kampfgeschichte: komplette Duelle, TTS und Story im Vordergrund.","Classic battle stories with full duels, TTS and narrative focus.")}</small></button>
+        <button class="battle-mode-option cardgame" onclick="chooseBattleExperience('cardgame')"><span>🃏</span><b>CARDGAME</b><strong>${L("TAKTIK","TACTICS")}</strong><small>${L("Active, Bank, Energy, Typen, Passives, Setup, Retreat und Revive.","Active, Bench, Energy, types, passives, setup, retreat and revive.")}</small></button>
+        <button class="battle-mode-option cinematic" onclick="chooseBattleExperience('cinematic')"><span>🎬</span><b>CINEMATIC</b><strong>${L("AUTO-FIGHT","AUTO FIGHT")}</strong><small>${L("Automatisch berechneter Kampf mit der bisherigen cineastischen Präsentation.","Automatically resolved fight with the existing cinematic presentation.")}</small></button>
+      </div>` : html`<div class="battle-mode-wait"><b>${L("Der Host wählt gerade den Kampfmodus…","The host is choosing the battle mode…")}</b></div>`}
+    </div>
+  </section>`;
+}
+function chooseBattleExperience(mode) {
+  if (!game || game.phase !== "battle" || !(online.mode === "local" || online.mode === "host")) return false;
+  if (!["classic","cardgame","cinematic"].includes(mode)) return false;
+  game.combatMode = mode;
+  game.hybrid = null;
+  game.cardBattle = null;
+  game.result = null;
+  game.classicStoryIndex = 0;
+  sync();
+  startBattle();
+  return true;
+}
+function renderClassicStory() {
+  if (!game?.result?.scenes?.length) return renderResult();
+  const i = Math.max(0, Math.min(game.classicStoryIndex || 0, game.result.scenes.length - 1));
+  const scene = game.result.scenes[i], a = scene.attacker, d = scene.defender;
+  const text = localizedSceneText(scene, false) || scene.text || scene.shortText || "";
+  const short = localizedSceneText(scene, true) || scene.shortText || text;
+  app.innerHTML = html`<section class="screen classic-story-screen">
+    <div class="phase"><div><div class="kicker">CLASSIC · STORY · ${i+1}/${game.result.scenes.length}</div><h1>${esc(scene.title || `${a.name} vs ${d.name}`)}</h1></div><div class="pill">${esc(scene.arena || "NULL ARENA")}</div></div>
+    <div class="classic-story-duel"><article><img id="classicStoryA" src="${avatar(a.name,a.franchise)}"><b>${esc(a.name)}</b></article><div class="classic-story-vs">VS</div><article><img id="classicStoryB" src="${avatar(d.name,d.franchise)}"><b>${esc(d.name)}</b></article></div>
+    <div class="storybox classic-story-copy"><div class="kicker">${esc(scene.event || L("KAMPFGESCHICHTE","BATTLE STORY"))}</div><p>${esc(text)}</p></div>
+    <div class="actions"><button class="btn secondary" onclick="stopTTS();narrateBlock(localizedSceneText(game.result.scenes[game.classicStoryIndex||0],false)||game.result.scenes[game.classicStoryIndex||0].text)">🔊 ${L("VORLESEN","READ")}</button><button class="btn gold" onclick="classicStoryNext()">${i+1>=game.result.scenes.length?L("ZUM ERGEBNIS","RESULT"):L("NÄCHSTES KAPITEL","NEXT CHAPTER")}</button></div>
+  </section>`;
+  resolveImage(a).then(src=>{const x=$("#classicStoryA");if(x)x.src=src;});
+  resolveImage(d).then(src=>{const x=$("#classicStoryB");if(x)x.src=src;});
+  stopTTS(); if (settings.tts) narrateBlock(short);
+}
+function classicStoryNext(){
+  stopTTS();
+  if (!game?.result) return;
+  game.classicStoryIndex = (game.classicStoryIndex || 0) + 1;
+  if (game.classicStoryIndex >= game.result.scenes.length) { game.phase = "result"; sync(); return renderResult(); }
+  sync(); renderClassicStory();
+}
 function startBattle() {
   game.phase = "battle";
-  if (game.result) return renderBattleIntro();
-  if (
-    game.battleMode === "auto" ||
-    (!game.hybrid && settings.battleFormat === "auto")
-  ) {
-    game.result = simulateMatch();
-    sync();
+  if (!game.combatMode) return renderBattleModeChoice();
+  if (game.combatMode === "cinematic") {
+    if (!game.result) { game.result = simulateMatch(); sync(); }
     return renderBattleIntro();
   }
-  if (game.cardBattle) {
-    renderCardBattle();
-    return;
+  if (game.combatMode === "classic") {
+    if (!game.result) { game.result = simulateMatch(); game.classicStoryIndex = 0; sync(); }
+    return renderClassicStory();
   }
+  if (game.cardBattle) { renderCardBattle(); return; }
   const fresh = !game.hybrid;
   hybridBattle.init();
   if (fresh) sync();
@@ -15305,30 +15396,19 @@ async function openNetworkDiagnostics() {
 function rules() {
   modal(
     html`<button class="x" onclick="closeModal()">×</button>
-      <h2>Spielregeln</h2>
-      <p>
-        <b>Draft:</b> 7 gegen 7. Zwei Picks pro Zug. Ein Wechsel verpflichtet dich, den nächsten
-        Charakter zu nehmen.
-      </p>
-      <p>
-        <b>Kartenkampf:</b> Beide Spieler wählen verdeckt. Erst wenn beide bestätigt haben, wird die
-        Runde aufgelöst. Vier Duellsiege entscheiden das Match; maximal sieben Duelle.
-      </p>
-      <p>
-        <b>Taktik:</b> Angriff hat einen Vorteil gegen Finte, Finte gegen Konter und Konter gegen Angriff.
-        Figurenstärke, Fähigkeiten und Arena zählen ebenfalls; ein Kartenvorteil garantiert keinen Sieg.
-        Nach jedem Duell bekommst du eine Energie, bei einer Niederlage eine weitere. Den Finisher kannst du einmal einsetzen; er kostet drei Energie und wird durch Konter gebremst.
-      </p>
-      <p>
-        <b>Online:</b> Beide Spieler öffnen dieselbe Version. Der Host steuert das Match. Bei kurzen
-        Unterbrechungen verbinden wir euch automatisch erneut. Lass den Spiel-Tab offen.
-      </p>
-      <div class="actions">
-        <button class="btn secondary" onclick="openNetworkDiagnostics()">VERBINDUNG PRÜFEN</button>
-      </div>`,
+      <h2>${L("Spielregeln · V3","Game Rules · V3")}</h2>
+      <p><b>${L("Draft:","Draft:")}</b> ${L("7 gegen 7 wie bisher. Captain und Lineup bleiben Teil der Vorbereitung.","7 vs 7 as before. Captain and lineup remain part of setup.")}</p>
+      <p><b>${L("Feld:","Board:")}</b> ${L("1 Active, 3 Bankkarten und bis zu 3 Reservekarten. Nach einem KO wählst du selbst den nächsten Active.","1 Active, 3 Bench cards and up to 3 Reserve cards. After a KO you choose the next Active.")}</p>
+      <p><b>${L("Klassen:","Classes:")}</b> 💥 ${L("Kraft","Force")} → 🛡 ${L("Panzer","Guard")} → ⚡ ${L("Tempo","Rush")} → ✦ ${L("Hax","Arcane")} → 💥. ${L("Weakness verursacht ×1,5 Schaden; Resistance reduziert um 20.","Weakness deals ×1.5 damage; Resistance reduces damage by 20.")}</p>
+      <p><b>Energy:</b> ${L("Pro Zug darfst du 1 Energy an eine Active- oder Bankkarte legen. Angriffe haben individuelle Kosten; Energy bleibt an der Karte angelegt. Retreat wirft Energy ab.","Each turn you may attach 1 Energy to an Active or Bench card. Attacks have individual requirements; Energy stays attached to the card. Retreat discards Energy.")}</p>
+      <p><b>${L("Abilities & Synergy:","Abilities & Synergy:")}</b> ${L("Jede Figur besitzt eine sichtbare eigene Ability/Passive. Gerade schwächere Karten können starke Bank-, Heal-, Energy- oder Team-Synergien liefern.","Every character has a visible ability/passive. Lower-stat cards can provide powerful Bench, healing, Energy or team synergies.")}</p>
+      <p><b>Captain:</b> ${L("Der Captain erzeugt eine sichtbare Klassen-Aura, solange er Active oder auf der Bank ist. Die Wahl soll zu deinem Team und Lineup passen.","The Captain provides a visible class aura while Active or on the Bench. Choose it to fit your team and lineup.")}</p>
+      <p><b>Revive:</b> ${L("Einmal pro Match. Zahle Energy vom Active und hole eine KO-Karte mit 50 % HP und 0 Energy zurück.","Once per match. Pay Energy from your Active and return a KO card with 50% HP and 0 Energy.")}</p>
+      <p><b>${L("Story/TTS:","Story/TTS:")}</b> ${L("Nach jedem KO bleibt die Kampfgeschichte mit TTS und Langfassung erhalten. Das Endergebnis sammelt weiterhin alle Szenen.","After every KO the battle story, TTS and full narration remain. The final result still collects every scene.")}</p>
+      <p><b>Online:</b> ${L("Der Host synchronisiert weiterhin den Spielstand; Reconnect und Room-Code bleiben unverändert.","The host still synchronizes game state; reconnect and room codes remain unchanged.")}</p>
+      <div class="actions"><button class="btn secondary" onclick="openNetworkDiagnostics()">${L("VERBINDUNG PRÜFEN","CHECK CONNECTION")}</button></div>`,
   );
 }
-
 
 /** Gemeinsame TTS-Steuerung. Abgebrochene Sprachausgabe darf keine neue Szene starten. */
 class NarrationPlayer {
@@ -15378,16 +15458,18 @@ class NarrationPlayer {
     const utterance = new SpeechSynthesisUtterance(text),
       voices = speechSynthesis.getVoices();
     this.utterance = utterance;
+    const wantedLang = uiLang === "en" ? "en" : "de";
+    const savedVoice = voices.find((v) => v.name === localStorage.getItem("avg25-voice") && v.lang.toLowerCase().startsWith(wantedLang));
     utterance.voice =
-      voices.find((v) => v.name === localStorage.getItem("avg25-voice")) ||
-      voices.find((v) => v.lang.startsWith("de") && v.localService) ||
-      voices.find((v) => v.lang.startsWith("de")) ||
+      savedVoice ||
+      voices.find((v) => v.lang.toLowerCase().startsWith(wantedLang) && v.localService) ||
+      voices.find((v) => v.lang.toLowerCase().startsWith(wantedLang)) ||
       null;
-    utterance.lang = utterance.voice?.lang || "de-DE";
+    utterance.lang = utterance.voice?.lang || (uiLang === "en" ? "en-US" : "de-DE");
     utterance.rate = Number(localStorage.getItem("avg25-rate") || 0.97);
     utterance.onend = finish;
     utterance.onerror = () => {
-      toast("Sprachausgabe nicht verfügbar. Die Szene bleibt lesbar.");
+      toast(L("Sprachausgabe nicht verfügbar. Die Szene bleibt lesbar.","Speech output is unavailable. The scene remains readable."));
       finish();
     };
     try {
@@ -15445,564 +15527,644 @@ function compactLiveNarration(scene, text) {
 }
 
 
-/** Kurze Duelle mit verdeckten Karten, gemeinsamer Energie und erzähltem Ausgang.
- * Der Host berechnet Entscheidungen. Audio und Lesefortschritt bleiben pro Gerät lokal.
+/** V3 TCG battle — the draft, online sync, TTS/story and result flow stay intact.
+ * Only the former hidden-choice duel layer is replaced by an open-information card game.
  */
-const DUEL_CARDS = [
+const TCG_TYPE_ORDER = ["FORCE", "GUARD", "RUSH", "ARCANE"];
+const TCG_TYPE_META = {
+  FORCE:  { icon: "💥", de: "Kraft", en: "Force",  weakness: "ARCANE", resistance: "RUSH" },
+  GUARD:  { icon: "🛡", de: "Panzer", en: "Guard", weakness: "FORCE",  resistance: "ARCANE" },
+  RUSH:   { icon: "⚡", de: "Tempo", en: "Rush",  weakness: "GUARD",  resistance: "FORCE" },
+  ARCANE: { icon: "✦", de: "Hax",    en: "Arcane",weakness: "RUSH",   resistance: "GUARD" },
+};
+const TCG_STADIUMS = [
   {
-    id: "strike",
-    title: "Angriff",
-    cost: 0,
-    beats: "feint",
-    detail: "Schlägt die Finte. Kostenlos – spare Energie für später.",
+    name: "Null Arena",
+    de: "Panzer-Karten erhalten 10 weniger Schaden.",
+    en: "Guard cards take 10 less damage.",
+    damageIn(attacker, defender, damage) { return tcgType(defender) === "GUARD" ? Math.max(0, damage - 10) : damage; },
   },
   {
-    id: "counter",
-    title: "Konter",
-    cost: 1,
-    beats: "strike",
-    detail: "Fängt Angriff und Finisher ab. Anfällig für Finten.",
+    name: "Megacity",
+    de: "Tempo-Karten zahlen 1 Energie weniger für Rückzug.",
+    en: "Rush cards pay 1 less Energy to retreat.",
+    retreat(c, cost) { return tcgType(c) === "RUSH" ? Math.max(0, cost - 1) : cost; },
   },
   {
-    id: "feint",
-    title: "Finte",
-    cost: 1,
-    beats: "counter",
-    detail: "Lockt den Konter heraus. Verliert gegen direkten Druck.",
-  },
-  {
-    id: "ultimate",
-    title: "Finisher",
-    cost: 3,
-    beats: null,
-    detail: "Einmal pro Match: großer Kraftschub. Ein Konter bremst ihn.",
+    name: "Fractured Multiverse",
+    de: "Hax-Karten verursachen mit Angriffen +10 Schaden.",
+    en: "Arcane cards deal +10 attack damage.",
+    damageOut(attacker, defender, damage) { return tcgType(attacker) === "ARCANE" ? damage + 10 : damage; },
   },
 ];
 
-function duelTechnique(fighter, cardId) {
-  const index = { strike: 0, counter: 1, feint: 3, ultimate: 2 }[cardId];
-  return fighter.skillKit?.[index] || fighter.skillKit?.[0];
+function tcgClamp(lo, hi, n) { return Math.max(lo, Math.min(hi, n)); }
+function tcgRound10(n) { return Math.max(0, Math.round(n / 10) * 10); }
+function tcgAvg(c) { return (c.power + c.hax + c.speed + c.durability) / 4; }
+function tcgType(c) {
+  if (!c) return "FORCE";
+  const values = [
+    ["FORCE", Number(c.power) || 0],
+    ["ARCANE", Number(c.hax) || 0],
+    ["RUSH", Number(c.speed) || 0],
+    ["GUARD", Number(c.durability) || 0],
+  ];
+  values.sort((a,b) => b[1] - a[1] || TCG_TYPE_ORDER.indexOf(a[0]) - TCG_TYPE_ORDER.indexOf(b[0]));
+  return values[0][0];
+}
+function tcgTypeText(type) {
+  const m = TCG_TYPE_META[type] || TCG_TYPE_META.FORCE;
+  return `${m.icon} ${uiLang === "en" ? m.en : m.de}`;
+}
+function tcgMaxHp(c) {
+  return tcgRound10(90 + (Number(c.durability) || 50) * 2.05);
+}
+function tcgBaseRetreat(c) {
+  const s = Number(c.speed) || 50;
+  return s >= 96 ? 0 : s >= 88 ? 1 : s >= 76 ? 2 : 3;
+}
+function tcgStatForTrait(trait) {
+  const t = String(trait || "").toLowerCase();
+  if (["magic","hax","concept","reality","time","space","illusion","domain","return-zero","vector","anti-magic","psychic","mana","cursed-energy","chakra","ki","energy","absorb","creation","future","fate"].includes(t)) return "hax";
+  if (["speed","teleport","evasion","intangible","witch-time","assassin","movement","lightning"].includes(t)) return "speed";
+  if (["barrier","armor","guard","regen","durability","shield","reflect"].includes(t)) return "durability";
+  return "power";
+}
+function tcgStatLabel(k) {
+  return { power:"POWER", hax:"HAX", speed:"SPEED", durability:"DUR" }[k] || "POWER";
+}
+
+const TCG_ABILITY_OVERRIDES = {
+  "Son Goku": { type:"shieldFirst", value:30, nameDe:"Ultra Instinct", nameEn:"Ultra Instinct", de:"Wenn Goku aktiv wird, reduziert er den ersten gegnerischen Treffer um 30.", en:"When Goku becomes Active, reduce the first opposing hit by 30." },
+  "Broly": { type:"growth", value:10, nameDe:"Unbegrenztes Wachstum", nameEn:"Limitless Growth", de:"Überlebt Broly einen Treffer, erhält sein nächster Angriff +10 Schaden (max. +30).", en:"When Broly survives a hit, his next attack gains +10 damage (max +30)." },
+  "Satoru Gojo": { type:"shieldFirst", value:40, nameDe:"Infinity", nameEn:"Infinity", de:"Wenn Gojo aktiv wird, reduziert Infinity den ersten gegnerischen Treffer um 40.", en:"When Gojo becomes Active, Infinity reduces the first opposing hit by 40." },
+  "Asta": { type:"wardArcane", value:30, nameDe:"Anti-Magic", nameEn:"Anti-Magic", de:"Asta erhält 30 weniger Schaden von Hax-Karten.", en:"Asta takes 30 less damage from Arcane cards." },
+  "Meliodas": { type:"wardArcane", value:20, nameDe:"Full Counter", nameEn:"Full Counter", de:"Meliodas erhält 20 weniger Schaden von Hax-Karten; sein nächster Angriff danach erhält +10.", en:"Meliodas takes 20 less damage from Arcane cards; his next attack then gains +10." },
+  "Alucard": { type:"regen", value:20, nameDe:"Unsterblicher Körper", nameEn:"Undying Body", de:"Am Ende deines Zuges heilt Alucard 20 HP. Sein eigener Revive kostet 1 Energie weniger.", en:"At the end of your turn, Alucard heals 20 HP. Reviving Alucard costs 1 less Energy." },
+  "Sonic": { type:"freeRetreat", value:1, nameDe:"Speedster", nameEn:"Speedster", de:"Sonics Rückzug kostet 1 Energie weniger. Nach einem Rückzug erhält der eingewechselte Tempo-Verbündete +10 auf seinen nächsten Angriff.", en:"Sonic's retreat costs 1 less Energy. After retreating, the incoming Rush ally gets +10 on its next attack." },
+  "Shadow the Hedgehog": { type:"freeRetreat", value:1, nameDe:"Chaos Control", nameEn:"Chaos Control", de:"Shadow zahlt 1 Energie weniger für Rückzug und ignoriert beim ersten Angriff nach dem Wechsel Resistance.", en:"Shadow pays 1 less Energy to retreat and ignores Resistance on the first attack after switching in." },
+  "Accelerator": { type:"wardForce", value:30, nameDe:"Vector Reflection", nameEn:"Vector Reflection", de:"Accelerator erhält 30 weniger Schaden von Kraft-Karten.", en:"Accelerator takes 30 less damage from Force cards." },
+  "Kirby": { type:"copyBoost", value:20, nameDe:"Copy Ability", nameEn:"Copy Ability", de:"Wenn der gegnerische Active einen höheren stärksten Stat besitzt, verursachen Kirbys Angriffe +20 Schaden.", en:"If the opposing Active has a higher best stat, Kirby's attacks deal +20 damage." },
+  "Rimuru Tempest": { type:"pierce", value:1, nameDe:"Great Sage Analysis", nameEn:"Great Sage Analysis", de:"Rimurus Angriffe ignorieren Resistance. Beim ersten Wechsel ins Active erhält Rimuru 1 Energie.", en:"Rimuru's attacks ignore Resistance. The first time Rimuru becomes Active, attach 1 Energy to it." },
+};
+
+const TCG_TAG_ABILITY = {
+  regen: ["regen", "Regeneration", "Regeneration"],
+  growth: ["growth", "Wachstum", "Growth"],
+  adaptation: ["adapt", "Adaptation", "Adaptation"],
+  "anti-magic": ["wardArcane", "Anti-Magic", "Anti-Magic"],
+  infinity: ["shieldFirst", "Infinity", "Infinity"],
+  barrier: ["shieldFirst", "Barriere", "Barrier"],
+  armor: ["shieldFirst", "Panzerung", "Armor"],
+  teleport: ["freeRetreat", "Teleport", "Teleport"],
+  intangible: ["freeRetreat", "Phasing", "Phasing"],
+  "witch-time": ["freeRetreat", "Witch Time", "Witch Time"],
+  analysis: ["benchFocus", "Analyse-Link", "Analysis Link"],
+  intellect: ["benchFocus", "Taktische Analyse", "Tactical Analysis"],
+  sense: ["benchGuard", "Sensor-Support", "Sensor Support"],
+  summon: ["benchBoost", "Summon Support", "Summon Support"],
+  support: ["benchHeal", "Support Aura", "Support Aura"],
+  absorb: ["battery", "Absorption", "Absorption"],
+  copy: ["copyBoost", "Copy", "Copy"],
+  reality: ["pierce", "Reality Break", "Reality Break"],
+  concept: ["pierce", "Concept Break", "Concept Break"],
+  space: ["pierce", "Space Control", "Space Control"],
+  domain: ["pierce", "Domain Control", "Domain Control"],
+  rage: ["rage", "Rage", "Rage"],
+};
+
+function tcgAbility(c) {
+  if (!c) return null;
+  if (TCG_ABILITY_OVERRIDES[c.name]) return { ...TCG_ABILITY_OVERRIDES[c.name] };
+  const tags = c.tags || [];
+  const weak = tcgAvg(c) < 76 || c.rarity === "Rare";
+  // Lower-stat cards intentionally lean toward powerful team engines instead of becoming dead draws.
+  if (weak) {
+    const mode = (hash(c.name + "|cardgame-support") >>> 0) % 8;
+    const tagName = tags[0] || "Team";
+    if (mode === 0) return { type:"benchBoost", value:10, nameDe:`${tagName} Resonanz`, nameEn:`${tagName} Resonance`, de:"Auf der Bank: Verbündete derselben Klasse oder mit gemeinsamem Trait verursachen +10 Schaden.", en:"On the Bench: allies of the same class or sharing a trait deal +10 damage." };
+    if (mode === 1) return { type:"benchGuard", value:10, nameDe:"Defensiver Link", nameEn:"Defensive Link", de:"Auf der Bank: Verbündete derselben Klasse oder mit gemeinsamem Trait erhalten 10 weniger Schaden.", en:"On the Bench: allies of the same class or sharing a trait take 10 less damage." };
+    if (mode === 2) return { type:"benchHeal", value:10, nameDe:"Feld-Support", nameEn:"Field Support", de:"Auf der Bank: Zu Beginn deines Zuges heilt dein Active 10 HP (Support insgesamt max. 20).", en:"On the Bench: heal your Active for 10 HP at the start of your turn (support capped at 20)." };
+    if (mode === 3) return { type:"relay", value:1, nameDe:"Energy Relay", nameEn:"Energy Relay", de:"Wird ein passender Verbündeter von der Bank ins Active befördert, gibt diese Karte ihm einmal pro Match 1 Energie.", en:"When a matching ally is promoted from the Bench, this card gives it 1 Energy once per match." };
+    if (mode === 4) return { type:"benchFocus", value:1, nameDe:"Taktischer Aufbau", nameEn:"Tactical Setup", de:"Auf der Bank: Der teuerste Angriff eines passenden Active benötigt 1 Energie weniger (nicht stapelbar).", en:"On the Bench: the most expensive attack of a matching Active costs 1 less Energy (does not stack)." };
+    if (mode === 5) return { type:"freeRetreat", value:1, nameDe:"Pivot", nameEn:"Pivot", de:"Diese Karte zahlt 1 Energie weniger für Rückzug und eignet sich als flexibler Pivot.", en:"This card pays 1 less Energy to retreat, making it a flexible pivot." };
+    if (mode === 6) return { type:"firstStrike", value:20, nameDe:"Überraschungsangriff", nameEn:"Surprise Entry", de:"Der erste Angriff nach dem Wechsel ins Active verursacht +20 Schaden.", en:"The first attack after becoming Active deals +20 damage." };
+    return { type:"regen", value:10, nameDe:"Ausdauer-Engine", nameEn:"Sustain Engine", de:"Am Ende deines Zuges heilt diese Karte 10 HP. Günstig aufzubauen und schwer auszutauschen.", en:"At the end of your turn heal 10 HP. Cheap to build and difficult to trade away." };
+  }
+  for (const tag of tags) {
+    const spec = TCG_TAG_ABILITY[tag];
+    if (!spec) continue;
+    const [type, deName, enName] = spec;
+    if (type === "regen") return { type, value:10, nameDe:deName, nameEn:enName, de:"Am Ende deines Zuges heilt diese Karte 10 HP.", en:"At the end of your turn, heal this card for 10 HP." };
+    if (type === "growth") return { type, value:10, nameDe:deName, nameEn:enName, de:"Überlebt diese Karte Schaden, erhält ihr nächster Angriff +10 (max. +30).", en:"When this card survives damage, its next attack gains +10 (max +30)." };
+    if (type === "adapt") return { type, value:20, nameDe:deName, nameEn:enName, de:"Wiederholt der Gegner denselben Angriff direkt, erhält diese Karte 20 weniger Schaden.", en:"If the opponent repeats the same attack immediately, this card takes 20 less damage." };
+    if (type === "wardArcane") return { type, value:20, nameDe:deName, nameEn:enName, de:"Diese Karte erhält 20 weniger Schaden von Hax-Karten.", en:"This card takes 20 less damage from Arcane cards." };
+    if (type === "shieldFirst") return { type, value:20, nameDe:deName, nameEn:enName, de:"Beim Wechsel ins Active reduziert die Karte den ersten gegnerischen Treffer um 20.", en:"When switched into Active, reduce the first opposing hit by 20." };
+    if (type === "freeRetreat") return { type, value:1, nameDe:deName, nameEn:enName, de:"Rückzug kostet 1 Energie weniger.", en:"Retreat costs 1 less Energy." };
+    if (type === "benchFocus") return { type, value:1, nameDe:deName, nameEn:enName, de:"Auf der Bank: Der teuerste Angriff deines Active derselben Klasse benötigt 1 Energie weniger (nicht stapelbar).", en:"On the Bench: the most expensive attack of your same-class Active needs 1 less Energy (does not stack)." };
+    if (type === "benchGuard") return { type, value:10, nameDe:deName, nameEn:enName, de:"Auf der Bank: Active-Verbündete derselben Klasse erhalten 10 weniger Schaden.", en:"On the Bench: same-class Active allies take 10 less damage." };
+    if (type === "benchBoost") return { type, value:10, nameDe:deName, nameEn:enName, de:"Auf der Bank: Active-Verbündete derselben Klasse verursachen +10 Schaden.", en:"On the Bench: same-class Active allies deal +10 damage." };
+    if (type === "benchHeal") return { type, value:10, nameDe:deName, nameEn:enName, de:"Auf der Bank: Zu Beginn deines Zuges heilt dein Active 10 HP (Support insgesamt max. 20).", en:"On the Bench: at the start of your turn heal your Active for 10 HP (support capped at 20)." };
+    if (type === "battery") return { type, value:1, nameDe:deName, nameEn:enName, de:"Wird diese Karte von einer Hax-Attacke getroffen und überlebt, erhält sie einmal pro gegnerischem Zug 1 Energie.", en:"When this card survives an Arcane attack, it gains 1 Energy once per opposing turn." };
+    if (type === "copyBoost") return { type, value:10, nameDe:deName, nameEn:enName, de:"Gegen einen Gegner mit höherem stärksten Stat verursachen Angriffe +10 Schaden.", en:"Against an opponent with a higher best stat, attacks deal +10 damage." };
+    if (type === "pierce") return { type, value:1, nameDe:deName, nameEn:enName, de:"Angriffe dieser Karte ignorieren Resistance.", en:"This card's attacks ignore Resistance." };
+    if (type === "rage") return { type, value:20, nameDe:deName, nameEn:enName, de:"Unter 50 % HP verursachen Angriffe +20 Schaden.", en:"Below 50% HP, attacks deal +20 damage." };
+  }
+  if (c.role === "Support") return { type:"benchHeal", value:10, nameDe:"Support Network", nameEn:"Support Network", de:"Auf der Bank: Zu Beginn deines Zuges heilt dein Active 10 HP (Support insgesamt max. 20).", en:"On the Bench: at the start of your turn heal your Active for 10 HP (support capped at 20)." };
+  if (c.role === "Assassin") return { type:"freeRetreat", value:1, nameDe:"Hit & Run", nameEn:"Hit & Run", de:"Rückzug kostet 1 Energie weniger.", en:"Retreat costs 1 less Energy." };
+  if (c.role === "Mage" || c.role === "Hax") return { type:"pierce", value:1, nameDe:"Durchdringende Technik", nameEn:"Piercing Technique", de:"Angriffe ignorieren Resistance.", en:"Attacks ignore Resistance." };
+  return { type:"firstStrike", value:10, nameDe:"Kampfinstinkt", nameEn:"Battle Instinct", de:"Der erste Angriff nach dem Wechsel ins Active verursacht +10 Schaden.", en:"The first attack after becoming Active deals +10 damage." };
+}
+function tcgAbilityName(c) { const a = tcgAbility(c); return uiLang === "en" ? a.nameEn : a.nameDe; }
+function tcgAbilityText(c) { const a = tcgAbility(c); return uiLang === "en" ? a.en : a.de; }
+
+function tcgAttackSpecial(skill) {
+  const t = String(skill?.trait || "").toLowerCase();
+  if (["barrier","armor","guard","reflect"].includes(t)) return { type:"shield", value:20, de:"Nach dem Angriff: 20 Schild für den nächsten Treffer.", en:"After attacking: gain a 20 shield for the next hit." };
+  if (["regen","heal","healing"].includes(t)) return { type:"heal", value:20, de:"Heilt danach 20 HP.", en:"Heal 20 HP after attacking." };
+  if (["teleport","speed","evasion","intangible","witch-time"].includes(t)) return { type:"retreatReady", value:1, de:"Dein nächster Rückzug mit dieser Karte kostet 1 weniger.", en:"This card's next retreat costs 1 less." };
+  if (["domain","concept","reality","space","return-zero"].includes(t)) return { type:"ignoreResistance", value:1, de:"Ignoriert Resistance.", en:"Ignores Resistance." };
+  if (["anti-magic"].includes(t)) return { type:"arcaneBreaker", value:20, de:"Gegen Hax-Active +20 Schaden.", en:"Deals +20 damage against an Arcane Active." };
+  if (["absorb"].includes(t)) return { type:"drain", value:10, de:"Bei Treffer: heilt 10 HP.", en:"On hit: heal 10 HP." };
+  if (["rage","burst","destruction"].includes(t)) return { type:"lowHpBurst", value:20, de:"Unter 50 % HP +20 Schaden.", en:"Below 50% HP deal +20 damage." };
+  if (["time"].includes(t)) return { type:"retreatLock", value:1, de:"Der gegnerische Active kann im nächsten Zug nicht zurückgezogen werden.", en:"The opposing Active cannot retreat next turn." };
+  return null;
+}
+
+function tcgAttacks(c) {
+  const kit = (c?.skillKit || []).slice(0, 8);
+  if (!kit.length) return [];
+  const scored = kit.map((s, idx) => {
+    const statKey = tcgStatForTrait(s.trait), stat = Number(c[statKey]) || 50, bias = Number(s.bias) || 9;
+    return { s, idx, statKey, stat, potency: bias * 4 + stat * .55 };
+  }).sort((a,b)=>a.potency-b.potency);
+  const picks = [scored[0], scored[Math.floor((scored.length - 1) / 2)], scored[scored.length - 1]];
+  const unique = [];
+  for (const x of picks) if (x && !unique.some(y=>y.s.id===x.s.id)) unique.push(x);
+  while (unique.length < Math.min(3, scored.length)) {
+    const x = scored.find(q=>!unique.some(y=>y.s.id===q.s.id)); if (!x) break; unique.push(x);
+  }
+  return unique.map((x, i) => {
+    const bias = Number(x.s.bias) || 9;
+    const special = tcgAttackSpecial(x.s);
+    const profileTax = tcgAvg(c) >= 91 ? 1 : tcgAvg(c) <= 72 ? -1 : 0;
+    const skillTax = x.potency >= 102 ? 2 : x.potency >= 86 ? 1 : x.potency <= 66 ? -1 : 0;
+    const rankTax = i === 2 ? 1 : i === 0 ? -1 : 0;
+    let cost = tcgClamp(1, 5, 2 + profileTax + skillTax + rankTax);
+    if (["heal","shield","retreatReady"].includes(special?.type)) cost = Math.max(1, cost - 1);
+    if (["ignoreResistance","arcaneBreaker","retreatLock"].includes(special?.type) && i === 2) cost = Math.min(5, cost + 1);
+    let damage = 12 + x.stat * .48 + bias * 2.3 + cost * 10;
+    if (special?.type === "heal" || special?.type === "shield" || special?.type === "retreatLock") damage -= 10;
+    damage = tcgClamp(30, 160, tcgRound10(damage));
+    return {
+      id: x.s.id,
+      name: x.s.name,
+      trait: x.s.trait,
+      statKey: x.statKey,
+      stat: x.stat,
+      cost,
+      damage,
+      special,
+      rank: i,
+    };
+  }).sort((a,b)=>a.cost-b.cost || a.damage-b.damage);
+}
+
+function tcgCaptainAuraInfo(cOrType) {
+  const type = typeof cOrType === "string" ? cOrType : tcgType(cOrType);
+  if (type === "FORCE") return { type, de:"KRAFT-AURA · Kraft-Verbündete verursachen +10 Schaden, solange der Captain im Active/auf der Bank liegt.", en:"FORCE AURA · Force allies deal +10 damage while the Captain is Active/on the Bench." };
+  if (type === "ARCANE") return { type, de:"HAX-AURA · Beim Energy-Attach an einen Hax-Verbündeten werden 2 statt 1 Energie angelegt.", en:"ARCANE AURA · Attaching Energy to an Arcane ally attaches 2 instead of 1." };
+  if (type === "RUSH") return { type, de:"TEMPO-AURA · Tempo-Verbündete zahlen 1 Energie weniger für Rückzug.", en:"RUSH AURA · Rush allies pay 1 less Energy to retreat." };
+  return { type, de:"PANZER-AURA · Panzer-Verbündete erhalten 10 weniger Schaden, solange der Captain im Active/auf der Bank liegt.", en:"GUARD AURA · Guard allies take 10 less damage while the Captain is Active/on the Bench." };
+}
+
+function tcgStatus(h,p,id) {
+  h.status[p][id] ||= { growth:0, shield:0, firstStrike:true, relayUsed:false, rimuruEnergy:false, batteryTurn:-1, retreatReady:0, switchedBoost:0, captainBoost:0 };
+  return h.status[p][id];
+}
+function tcgCardById(id) { return BY_ID.get(id); }
+function tcgStadium(h) { return TCG_STADIUMS[h.stadiumIndex % TCG_STADIUMS.length]; }
+function tcgZoneIds(h,p) { return [h.active[p], ...(h.bench[p]||[]), ...(h.reserve[p]||[])].filter(Boolean); }
+function tcgInPlay(h,p,id) { return h.active[p] === id || (h.bench[p]||[]).includes(id); }
+function tcgCaptainInPlay(h,p) { const id = game.captains[p]; return !!id && tcgInPlay(h,p,id) && !(h.ko[p]||[]).includes(id); }
+function tcgCaptainAura(h,p) { if (!tcgCaptainInPlay(h,p)) return null; return tcgCaptainAuraInfo(tcgCardById(game.captains[p])); }
+function tcgSameType(a,b) { return tcgType(a) === tcgType(b); }
+function tcgBenchAbilityTotal(h,p,active,kind) {
+  let total = 0;
+  for (const id of h.bench[p] || []) {
+    const c = tcgCardById(id), ab = tcgAbility(c);
+    if (!c || !ab || ab.type !== kind || !tcgSynergyMatch(c, active)) continue;
+    total += Number(ab.value) || 0;
+  }
+  return Math.min(kind === "benchHeal" ? 20 : 20, total);
+}
+function tcgBenchFocus(h,p,active) {
+  return (h.bench[p] || []).some(id => {
+    const c = tcgCardById(id), ab = tcgAbility(c);
+    return c && ab?.type === "benchFocus" && tcgSynergyMatch(c,active);
+  }) ? 1 : 0;
+}
+function tcgAttackCost(h,p,c,attack) {
+  let cost = attack.cost;
+  if (tcgBenchFocus(h,p,c) && attack.rank === 2) cost--;
+  return Math.max(1, cost);
+}
+function tcgRetreatCost(h,p,c) {
+  let cost = tcgBaseRetreat(c);
+  const ab = tcgAbility(c), st = tcgStatus(h,p,c.id);
+  if (ab?.type === "freeRetreat") cost -= ab.value || 1;
+  if (st.retreatReady) cost--;
+  const aura = tcgCaptainAura(h,p);
+  if (aura?.type === "RUSH" && tcgType(c) === "RUSH") cost--;
+  const stadium = tcgStadium(h);
+  if (stadium.retreat) cost = stadium.retreat(c,cost);
+  return Math.max(0,cost);
+}
+function tcgBestStat(c) { return Math.max(c.power,c.hax,c.speed,c.durability); }
+function tcgReviveCost(c) { return c?.name === "Alucard" ? 2 : 3; }
+
+function tcgSceneText(s, short=false) {
+  if (!s) return "";
+  if (uiLang === "en") return (short ? s.shortEn : s.textEn) || (short ? s.shortText : s.text) || "";
+  return (short ? s.shortDe : s.textDe) || (short ? s.shortText : s.text) || "";
+}
+
+function tcgBuildStory(h, koEntry, sceneNo) {
+  const recent = (h.battleLog || []).slice(-5), attacker = koEntry.attacker, defender = koEntry.defender;
+  const ctx = h.context || { moveUsage:{}, phraseUsage:{}, beat:0, variant:game.seed };
+  ctx.beat = (ctx.beat || 0) + 1;
+  const cinematicDe = [];
+  for (let i=0;i<recent.length;i++) {
+    const x = recent[i];
+    try {
+      const beat = cleanNarrationText(r9MoveBeat(x.attacker, x.defender, x.attack, `cardgame-${sceneNo}-${i}`, ctx));
+      if (beat && !cinematicDe.includes(beat)) cinematicDe.push(beat);
+    } catch (_) {}
+  }
+  let finishDe = "";
+  try { finishDe = cleanNarrationText(r9MoveBeat(attacker, defender, koEntry.attack, `cardgame-fin-${sceneNo}`, ctx)); } catch (_) {}
+  const typeDe = koEntry.noteDe ? ` Die taktischen Effekte des letzten Austauschs — ${koEntry.noteDe} — öffnen das entscheidende Fenster.` : "";
+  const shortDe = `${attacker.name} trifft mit ${koEntry.attack.name} für ${koEntry.damage} Schaden. ${defender.name} geht KO — Punkt für Player ${koEntry.attackerP === 1 ? "One" : "Two"}.`;
+  const shortEn = `${attacker.name} lands ${koEntry.attack.name} for ${koEntry.damage} damage. ${defender.name} is Knocked Out — point for Player ${koEntry.attackerP === 1 ? "One" : "Two"}.`;
+  const textDe = cleanNarrationText(`${cinematicDe.join(" ")} ${finishDe}${typeDe} ${attacker.name} nutzt den entstandenen Vorteil und entscheidet diesen Abschnitt des Kampfes. ${defender.name} kann den letzten Treffer nicht mehr abfangen und geht zu Boden.`);
+  const enBeats = recent.map((x,i) => {
+    const lead = i === 0 ? `${x.attacker.name} opens the exchange with ${x.attack.name}` : `${x.attacker.name} answers with ${x.attack.name}`;
+    const tactical = x.noteEn ? `, forcing the fight through ${x.noteEn}` : "";
+    return `${lead}${tactical}.`;
+  }).join(" ");
+  const textEn = `${enBeats} The pressure keeps shifting until ${attacker.name} creates the final opening with ${koEntry.attack.name}. ${defender.name} cannot recover from the last exchange and is knocked out.`;
+  return {
+    textDe: textDe || `${attacker.name} setzt ${koEntry.attack.name} im entscheidenden Moment ein und zwingt ${defender.name} in den KO.`,
+    textEn,
+    shortDe, shortEn,
+    titleDe: `KO ${sceneNo} · ${attacker.name} gegen ${defender.name}`,
+    titleEn: `KO ${sceneNo} · ${attacker.name} vs ${defender.name}`,
+  };
+}
+
+function tcgTypeResolution(attacker, defender, damage, ignoreResistance=false) {
+  const atkType = tcgType(attacker), defMeta = TCG_TYPE_META[tcgType(defender)];
+  if (defMeta.weakness === atkType) return { damage: tcgRound10(damage * 1.5), kind:"weak", de:"Schwäche ×1,5", en:"Weakness ×1.5" };
+  if (!ignoreResistance && defMeta.resistance === atkType) return { damage: Math.max(0, damage - 20), kind:"resist", de:"Resistance −20", en:"Resistance −20" };
+  return { damage, kind:"normal", de:"neutral", en:"neutral" };
+}
+
+function tcgMatchupInfo(c, enemy) {
+  if (!c || !enemy) return { state:"neutral", arrow:"•", de:"Kein direkter Typvorteil", en:"No direct type edge" };
+  const type = tcgType(c), enemyType = tcgType(enemy), enemyMeta = TCG_TYPE_META[enemyType], selfMeta = TCG_TYPE_META[type];
+  if (enemyMeta.weakness === type) return { state:"up", arrow:"↑", de:`Typvorteil gegen ${tcgTypeText(enemyType)} · Weakness ×1,5`, en:`Type advantage vs ${tcgTypeText(enemyType)} · Weakness ×1.5` };
+  if (enemyMeta.resistance === type) return { state:"down", arrow:"↓", de:`Typennachteil gegen ${tcgTypeText(enemyType)} · Resistance −20`, en:`Type disadvantage vs ${tcgTypeText(enemyType)} · Resistance −20` };
+  if (selfMeta.weakness === enemyType) return { state:"down", arrow:"↓", de:`Vorsicht: ${tcgTypeText(enemyType)} trifft diese Klasse effektiv.`, en:`Warning: ${tcgTypeText(enemyType)} is effective into this class.` };
+  return { state:"neutral", arrow:"•", de:`Neutral gegen ${tcgTypeText(enemyType)}`, en:`Neutral into ${tcgTypeText(enemyType)}` };
+}
+function tcgSynergyMatch(a,b){
+  if (!a || !b) return false;
+  if (tcgSameType(a,b)) return true;
+  const A=new Set(a.tags||[]); return (b.tags||[]).some(t=>A.has(t));
+}
+function tcgSetupHTML(h,p){
+  const active=tcgCardById(h.active[p]), parts=[];
+  const cap=tcgCardById(game.captains[p]);
+  if(cap&&tcgCaptainInPlay(h,p)) parts.push({icon:"👑",name:L("Captain-Aura","Captain Aura"),text:uiLang==="en"?tcgCaptainAuraInfo(cap).en:tcgCaptainAuraInfo(cap).de});
+  for(const id of h.bench[p]||[]){
+    const c=tcgCardById(id),ab=tcgAbility(c); if(!c||!ab)continue;
+    if(["benchBoost","benchGuard","benchHeal","benchFocus","relay"].includes(ab.type) && (!active || tcgSynergyMatch(c,active))) parts.push({icon:"◆",name:`${c.name} · ${uiLang==="en"?ab.nameEn:ab.nameDe}`,text:uiLang==="en"?ab.en:ab.de});
+  }
+  if(active){const st=tcgStatus(h,p,active.id);if(st.shield)parts.push({icon:"🛡",name:L("Schild","Shield"),text:`${st.shield}`});if(st.growth)parts.push({icon:"🔥",name:"Growth",text:`+${st.growth}`});if(st.retreatReady)parts.push({icon:"⚡",name:L("Mobility Setup","Mobility Setup"),text:L("Rückzug −1","Retreat −1")});if(st.switchedBoost)parts.push({icon:"↗",name:L("Switch-Bonus","Switch Boost"),text:`+${st.switchedBoost}`});if(st.captainBoost)parts.push({icon:"👑",name:"Captain Command",text:`+${st.captainBoost}`});}
+  if(h.retreatLock[p]>0)parts.push({icon:"🔒",name:L("Rückzug gesperrt","Retreat locked"),text:`${h.retreatLock[p]}`});
+  return html`<div class="tcg-setup-row"><span class="tcg-zone-label">${L("SETUP / PASSIVES","SETUP / PASSIVES")}</span>${parts.length?parts.map(x=>html`<div class="tcg-setup-chip" title="${esc(x.text)}"><b>${x.icon} ${esc(x.name)}</b><small>${esc(x.text)}</small></div>`).join(""):`<small class="tcg-no-setup">${L("Noch kein aktives Setup","No active setup yet")}</small>`}</div>`;
+}
+function tcgCardPanelHTML(c,p,h,zone,viewer,compact=false) {
+  if (!c) return "";
+  const id = c.id, hp = h.hp[p][id] ?? tcgMaxHp(c), max = tcgMaxHp(c), energy = h.energy[p][id] || 0;
+  const type = tcgType(c), meta = TCG_TYPE_META[type], ab = tcgAbility(c), retreat = tcgRetreatCost(h,p,c);
+  const enemy = tcgCardById(h.active[p===1?2:1]), matchup = tcgMatchupInfo(c,enemy);
+  const captain = game.captains[p] === id, ko = zone === "ko";
+  const canControl = h.stage === "main" && h.turn === p && viewer === p && !Net.pendingAction && (online.mode === "local" || online.connected);
+  const canAttach = canControl && !h.attachUsed && (zone === "active" || zone === "bench");
+  const canPromote = h.stage === "promote" && h.pendingPromote === p && viewer === p && (zone === "bench" || zone === "reserve");
+  return html`<article class="tcg-char-card type-${type.toLowerCase()} matchup-${matchup.state} ${compact?"compact":""} ${zone} ${captain?"captain":""} ${ko?"ko":""}" data-card-id="${id}">
+    <div class="tcg-rarity-row"><span>${captain?"👑 ":""}${esc(c.rarity || c.tier)}</span><span class="tcg-type-match ${matchup.state}">${tcgTypeText(type)} <b>${matchup.arrow}</b></span></div>
+    <div class="tcg-matchup-tip ${matchup.state}">${esc(uiLang==="en"?matchup.en:matchup.de)}</div>
+    <div class="tcg-card-art"><img data-tcg-img="${id}" src="${avatar(c.name,c.franchise)}" alt="${esc(c.name)}" /></div>
+    <div class="tcg-card-body">
+      <h3>${esc(c.name)}</h3><small>${esc(c.franchise)}</small>
+      <div class="tcg-hp"><span>HP ${hp}/${max}</span><i><b style="width:${tcgClamp(0,100,hp/max*100)}%"></b></i></div>
+      <div class="tcg-energy-row"><span>${L("Energie","Energy")}</span><b>${"◆".repeat(Math.min(8,energy)) || "◇"}</b><small>${energy}</small></div>
+      ${compact?"":html`<div class="tcg-statline"><span>POW <b>${c.power}</b></span><span>HAX <b>${c.hax}</b></span><span>SPD <b>${c.speed}</b></span><span>DUR <b>${c.durability}</b></span></div>
+      <div class="tcg-ability"><b>◆ ${esc(uiLang==="en"?ab.nameEn:ab.nameDe)}</b><p>${esc(uiLang==="en"?ab.en:ab.de)}</p></div>
+      <div class="tcg-card-meta"><span>${L("Schwäche","Weakness")}: ${tcgTypeText(meta.weakness)}</span><span>${L("Resistance","Resistance")}: ${tcgTypeText(meta.resistance)} −20</span><span>${L("Rückzug","Retreat")}: ${"◆".repeat(retreat) || "0"}</span></div>`}
+      <div class="tcg-card-actions">
+        <button class="tcg-mini-btn" onclick="tcgInspect('${id}',${p})">${L("KARTE","CARD")}</button>
+        ${canAttach?html`<button class="tcg-mini-btn energy" onclick="hybridAttach('${id}')">+ ◆</button>`:""}
+        ${canPromote?html`<button class="tcg-mini-btn promote" onclick="hybridPromote('${id}')">${L("AKTIV","PROMOTE")}</button>`:""}
+      </div>
+    </div>
+  </article>`;
+}
+
+function tcgAttackButtonsHTML(h,p,viewer) {
+  const c = tcgCardById(h.active[p]); if (!c) return "";
+  const attacks = tcgAttacks(c), energy = h.energy[p][c.id] || 0;
+  const can = h.stage === "main" && h.turn === p && viewer === p && !Net.pendingAction && (online.mode === "local" || online.connected);
+  return html`<div class="tcg-attacks"><div class="tcg-section-title"><span>${L("ANGRIFFE","ATTACKS")}</span><small>${L("Energie bleibt angelegt; Kosten sind Voraussetzungen.","Energy stays attached; costs are requirements.")}</small></div>
+    ${attacks.map(a=>{
+      const cost = tcgAttackCost(h,p,c,a), ok = can && energy >= cost;
+      return html`<button class="tcg-attack" ${ok?"":"disabled"} onclick="hybridAttack('${a.id}')">
+        <span class="tcg-attack-cost">${"◆".repeat(cost)}</span><b>${esc(a.name)}</b><strong>${a.damage}</strong>
+        <small>${tcgStatLabel(a.statKey)} ${a.stat} · ${esc(a.trait || "technique")}</small>
+        ${a.special?html`<p>${esc(uiLang==="en"?a.special.en:a.special.de)}</p>`:""}
+      </button>`;
+    }).join("")}
+  </div>`;
+}
+
+function tcgSideHTML(h,p,viewer,opponent=false) {
+  const active = tcgCardById(h.active[p]), captain = tcgCardById(game.captains[p]);
+  const aura = captain ? tcgCaptainAuraInfo(captain) : null, auraOn = tcgCaptainInPlay(h,p);
+  return html`<section class="tcg-side p${p} ${opponent?"opponent":"player"}">
+    <div class="tcg-player-head"><div><b>PLAYER ${p===1?"ONE":"TWO"}</b><small>${h.scores[p]} / 4 KO</small></div>
+      <div class="tcg-captain-aura ${auraOn?"on":"off"}"><span>👑 ${captain?esc(captain.name):"—"}</span><small>${aura?esc(uiLang==="en"?aura.en:aura.de):""}</small></div>
+    </div>
+    <div class="tcg-active-zone"><span class="tcg-zone-label">${L("ACTIVE","ACTIVE")}</span>${active?tcgCardPanelHTML(active,p,h,"active",viewer,false):html`<div class="tcg-empty">${L("Kein Active","No Active")}</div>`}</div>
+    <div class="tcg-bench"><span class="tcg-zone-label">${L("BANK","BENCH")}</span>${(h.bench[p]||[]).map(id=>tcgCardPanelHTML(tcgCardById(id),p,h,"bench",viewer,true)).join("")}${Array.from({length:Math.max(0,3-(h.bench[p]||[]).length)},()=>'<div class="tcg-empty-slot">+</div>').join("")}</div>
+    ${tcgSetupHTML(h,p)}
+    <details class="tcg-reserve"><summary>${L("Reserve","Reserve")} · ${(h.reserve[p]||[]).length}</summary><div>${(h.reserve[p]||[]).map(id=>tcgCardPanelHTML(tcgCardById(id),p,h,"reserve",viewer,true)).join("")||`<span>${L("Leer","Empty")}</span>`}</div></details>
+    <details class="tcg-ko"><summary>☠ KO · ${(h.ko[p]||[]).length}</summary><div>${(h.ko[p]||[]).map(id=>tcgCardPanelHTML(tcgCardById(id),p,h,"ko",viewer,true)).join("")||`<span>${L("Noch keine KOs","No KOs yet")}</span>`}</div></details>
+    ${!opponent && p===viewer ? tcgAttackButtonsHTML(h,p,viewer) : ""}
+  </section>`;
+}
+
+function tcgRevivePanelHTML(h,p,viewer) {
+  if (!settings.revive || p !== viewer || h.stage !== "main" || h.turn !== p) return "";
+  const active = tcgCardById(h.active[p]), activeEnergy = active ? h.energy[p][active.id] || 0 : 0;
+  return html`<div class="tcg-support-card ${h.reviveSpent[p]?"used":""}"><div><small>${L("SUPPORT · EINMAL PRO MATCH","SUPPORT · ONCE PER MATCH")}</small><h3>♻ REVIVE</h3><p>${L("Zahle die angezeigte Energie vom Active. Hole eine KO-Karte mit 50 % HP und 0 Energie zurück auf die Bank/Reserve.","Pay the shown Energy from your Active. Return a KO card with 50% HP and 0 Energy to Bench/Reserve.")}</p></div><div class="tcg-revive-options">${(h.ko[p]||[]).map(id=>{const c=tcgCardById(id),cost=tcgReviveCost(c),ok=!h.reviveSpent[p]&&!Net.pendingAction&&activeEnergy>=cost;return html`<button ${ok?"":"disabled"} onclick="hybridRevive('${id}')"><b>${esc(c.name)}</b><span>${"◆".repeat(cost)}</span></button>`}).join("")||`<span>${L("Noch kein Ziel.","No target yet.")}</span>`}</div></div>`;
+}
+
+function tcgTurnToolsHTML(h,p,viewer) {
+  if (p !== viewer || h.stage !== "main") return "";
+  const active = tcgCardById(h.active[p]); if (!active) return "";
+  const locked = h.retreatLock[p] > 0;
+  return html`<div class="tcg-turn-tools"><div><b>${h.turn===p?L("DEIN ZUG","YOUR TURN"):L("GEGNER AM ZUG","OPPONENT'S TURN")}</b><small>${L("Zug","Turn")} ${h.turnNo} · ${h.attachUsed?L("Energy bereits angelegt","Energy already attached"):L("1 Energy darf angelegt werden","You may attach 1 Energy")}</small></div>
+    <div class="tcg-turn-buttons"><button class="tcg-captain-command" ${h.turn===p&&!h.captainCommandUsed?.[p]&&tcgCaptainInPlay(h,p)&&!Net.pendingAction?"":"disabled"} onclick="hybridCaptainCommand()" title="${L("Einmal pro Match · Effekt hängt von der Captain-Klasse ab","Once per match · effect depends on the Captain class")}">👑 ${h.captainCommandUsed?.[p]?L("COMMAND VERBRAUCHT","COMMAND USED"):"CAPTAIN COMMAND"}</button><details><summary>${L("Rückzug / Wechsel","Retreat / Switch")} · ${"◆".repeat(tcgRetreatCost(h,p,active))||"0"}${locked?` · ${L("GESPERRT","LOCKED")}`:""}</summary><div class="tcg-switch-list">${(h.bench[p]||[]).map(id=>{const c=tcgCardById(id);return html`<button ${h.turn===p&&!locked&&!h.retreated&&(h.energy[p][active.id]||0)>=tcgRetreatCost(h,p,active)&&!Net.pendingAction?"":"disabled"} onclick="hybridRetreat('${id}')">${esc(c.name)}</button>`}).join("")||`<span>${L("Keine Bankkarte","No Bench card")}</span>`}</div></details><button class="tcg-end-turn" ${h.turn===p&&!Net.pendingAction?"":"disabled"} onclick="hybridEndTurn()">${L("ZUG BEENDEN","END TURN")}</button></div>
+  </div>`;
+}
+
+function tcgInspect(id,p=1) {
+  const c = tcgCardById(id); if (!c) return;
+  const fake = game.hybrid || { hp:{1:{},2:{}},energy:{1:{},2:{}},status:{1:{},2:{}},bench:{1:[],2:[]},reserve:{1:[],2:[]},ko:{1:[],2:[]},active:{1:null,2:null},stadiumIndex:0 };
+  const attacks = tcgAttacks(c), type = tcgType(c), meta = TCG_TYPE_META[type], ab = tcgAbility(c);
+  modal(html`<button class="x" onclick="closeModal()">×</button><div class="tcg-inspect type-${type.toLowerCase()}"><div class="tcg-inspect-head"><img id="tcgInspectImg" src="${avatar(c.name,c.franchise)}"><div><div class="kicker">${esc(c.rarity||c.tier)} · ${tcgTypeText(type)}</div><h2>${esc(c.name)}</h2><p>${esc(c.franchise)}</p><b>HP ${tcgMaxHp(c)}</b></div></div>
+    <div class="tcg-statline large"><span>POWER <b>${c.power}</b></span><span>HAX <b>${c.hax}</b></span><span>SPEED <b>${c.speed}</b></span><span>DUR <b>${c.durability}</b></span></div>
+    <div class="tcg-ability"><b>◆ ${esc(uiLang==="en"?ab.nameEn:ab.nameDe)}</b><p>${esc(uiLang==="en"?ab.en:ab.de)}</p></div>
+    <div class="tcg-inspect-attacks">${attacks.map(a=>html`<div><span>${"◆".repeat(a.cost)}</span><b>${esc(a.name)}</b><strong>${a.damage}</strong><small>${tcgStatLabel(a.statKey)} ${a.stat} · ${esc(a.trait||"technique")}</small>${a.special?html`<p>${esc(uiLang==="en"?a.special.en:a.special.de)}</p>`:""}</div>`).join("")}</div>
+    <div class="tcg-card-meta big"><span>${L("Schwäche","Weakness")}: ${tcgTypeText(meta.weakness)} ×1.5</span><span>Resistance: ${tcgTypeText(meta.resistance)} −20</span><span>${L("Basis-Rückzug","Base Retreat")}: ${"◆".repeat(tcgBaseRetreat(c))||"0"}</span></div></div>`);
+  resolveImage(c).then(src=>{const el=$("#tcgInspectImg");if(el)el.src=src;});
 }
 
 class HybridBattleDirector {
-  constructor() {
-    this.viewKey = "";
-    this.audioKey = "";
-    this.paused = false;
-  }
-  init() {
-    if (game.hybrid) { game.hybrid.swapUsed ||= { 1: false, 2: false }; return game.hybrid; }
+  constructor(){ this.viewKey=""; this.audioKey=""; this.paused=false; }
+  init(){
+    if (game.hybrid?.tcgVersion === 3) return game.hybrid;
     game.battleMode = "hybrid";
-    game.hybrid = {
-      round: 0,
-      stage: "choose",
-      scores: { 1: 0, 2: 0 },
-      energy: { 1: 2, 2: 2 },
-      ultimateUsed: { 1: false, 2: false },
-      swapUsed: { 1: false, 2: false },
-      reviveSpent: { 1: false, 2: false },
-      choices: { 1: null, 2: null },
-      locked: { 1: false, 2: false },
-      ready: { 1: false, 2: false },
-      pickPlayer: 1,
-      scenes: [],
-      lineup: { 1: cbLineup(1), 2: cbLineup(2) },
-      context: { moveUsage: {}, phraseUsage: {}, beat: 0, variant: game.seed },
+    const lineup = {1:cbLineup(1),2:cbLineup(2)};
+    const hp={1:{},2:{}},energy={1:{},2:{}},status={1:{},2:{}};
+    for(const p of [1,2]) for(const id of lineup[p]) { const c=tcgCardById(id); hp[p][id]=tcgMaxHp(c); energy[p][id]=0; status[p][id]={growth:0,shield:0,firstStrike:true,relayUsed:false,rimuruEnergy:false,batteryTurn:-1,retreatReady:0,switchedBoost:0,captainBoost:0}; }
+    game.hybrid={
+      tcgVersion:3,
+      turn:1,turnNo:1,stage:"main",pendingPromote:null,
+      scores:{1:0,2:0},active:{1:lineup[1][0],2:lineup[2][0]},
+      bench:{1:lineup[1].slice(1,4),2:lineup[2].slice(1,4)},reserve:{1:lineup[1].slice(4),2:lineup[2].slice(4)},ko:{1:[],2:[]},
+      hp,energy,status,lineup,
+      attachUsed:false,retreated:false,reviveSpent:{1:false,2:false},ready:{1:false,2:false},
+      scenes:[],battleLog:[],lastAction:null,stadiumIndex:0,retreatLock:{1:0,2:0},captainCommandUsed:{1:false,2:false},
+      context:{moveUsage:{},phraseUsage:{},beat:0,variant:game.seed},
     };
+    for(const p of [1,2]) this.onBecomeActive(p,game.hybrid.active[p],true);
     return game.hybrid;
   }
-  fighter(p) {
-    return BY_ID.get(game.hybrid.lineup[p][game.hybrid.round]);
-  }
-  available(p, id) {
-    const h = game.hybrid,
-      c = DUEL_CARDS.find((c) => c.id === id);
-    return (
-      !!c && h.energy[p] >= c.cost && !(id === "ultimate" && h.ultimateUsed[p])
-    );
-  }
-  choose(p, id) {
-    const h = game.hybrid;
-    if (
-      !h ||
-      h.stage !== "choose" ||
-      h.locked[p] ||
-      ![1, 2].includes(p) ||
-      !this.available(p, id)
-    )
-      return false;
-    if (online.mode === "local" && h.pickPlayer !== p) return false;
-    h.choices[p] = id;
-    h.locked[p] = true;
-    if (h.locked[1] && h.locked[2]) this.resolve();
-    else if (online.mode === "local") {
-      h.pickPlayer = p === 1 ? 2 : 1;
-      this.render();
-      passScreen(h.pickPlayer, "Wähle deine Karte verdeckt.");
-      return true;
+  active(p){ return tcgCardById(game.hybrid.active[p]); }
+  canAct(p){ const h=game.hybrid; return h?.stage==="main"&&h.turn===p&&(online.mode==="local"||online.role===p)&&(online.mode==="local"||online.connected)&&!Net.pendingAction; }
+  onBecomeActive(p,id,opening=false){
+    const h=game.hybrid,c=tcgCardById(id); if(!h||!c)return;
+    const st=tcgStatus(h,p,id),ab=tcgAbility(c);
+    st.firstStrike=true;
+    if(ab?.type==="shieldFirst") st.shield=Math.max(st.shield,ab.value||20);
+    if(c.name==="Rimuru Tempest"&&!st.rimuruEnergy&&!opening){h.energy[p][id]=(h.energy[p][id]||0)+1;st.rimuruEnergy=true;}
+    // Weak support Relay can make cheap cards strategically valuable from the Bench.
+    for(const sid of h.bench[p]||[]){
+      const sc=tcgCardById(sid),sab=tcgAbility(sc),sst=tcgStatus(h,p,sid);
+      if(sab?.type==="relay"&&!sst.relayUsed&&tcgSynergyMatch(sc,c)){ h.energy[p][id]=(h.energy[p][id]||0)+1; sst.relayUsed=true; break; }
     }
-    sync();
-    this.render();
-    return true;
   }
-  resolve() {
-    const h = game.hybrid;
-    if (h.stage !== "choose" || !h.locked[1] || !h.locked[2]) return;
-    const a = this.fighter(1),
-      b = this.fighter(2),
-      c1 = DUEL_CARDS.find((c) => c.id === h.choices[1]),
-      c2 = DUEL_CARDS.find((c) => c.id === h.choices[2]);
-    const random = mulberry32(
-      hash(`${game.seed}|${game.matchNo}|${h.round}|duel`),
-    );
-    const arena = ["Null Arena", "Megacity", "Fractured Multiverse"][
-      h.round % 3
-    ];
-    const previousRng = rng;
-    rng = random;
-    const ev = event();
-    rng = previousRng;
-    const ctx = h.context;
-    ctx.beat++;
-    const A = duelScore(a, b, arena, ev, 1, ctx),
-      B = duelScore(b, a, arena, ev, 2, ctx);
-    let edge = 0;
-    if (c1.beats === c2.id || (c1.id === "counter" && c2.id === "ultimate"))
-      edge += 0.19;
-    if (c2.beats === c1.id || (c2.id === "counter" && c1.id === "ultimate"))
-      edge -= 0.19;
-    if (c1.id === "ultimate" && c2.id !== "counter") edge += 0.23;
-    if (c2.id === "ultimate" && c1.id !== "counter") edge -= 0.23;
-    const chance = cbClamp(0.12, 0.88, A.score / (A.score + B.score) + edge);
-    let wp = random() < chance ? 1 : 2,
-      lp = wp === 1 ? 2 : 1,
-      reviveText = "";
-    const winner = wp === 1 ? a : b,
-      loser = lp === 1 ? a : b;
-    const mA = duelTechnique(a, c1.id) || pickCombatMove(a, b, ctx),
-      mB = duelTechnique(b, c2.id) || pickCombatMove(b, a, ctx),
-      mA2 = pickCombatMove(a, b, ctx, [mA.id]),
-      mB2 = pickCombatMove(b, a, ctx, [mB.id]);
-    const w1 = pickCombatMove(winner, loser, ctx),
-      w2 = pickCombatMove(winner, loser, ctx, [w1.id]),
-      w3 = pickCombatMove(winner, loser, ctx, [w1.id, w2.id]),
-      ld = pickCombatMove(loser, winner, ctx);
-    const opening = `${a.name} setzt auf ${c1.title}, ${b.name} auf ${c2.title}. `;
-    const full =
-      opening +
-      compactDuelNarrative(
-        a,
-        b,
-        mA,
-        mB,
-        mA2,
-        mB2,
-        winner,
-        loser,
-        w1,
-        w2,
-        w3,
-        ld,
-        wp === 1 ? A.ctr : B.ctr,
-        arena,
-        ev.name,
-        ctx,
-      ) +
-      "\n\n" +
-      reviveText;
-    // Short live narration; the full original narrative remains in the match report.
-    const firstSentence = (text) =>
-      (text.match(/[^.!?]+[.!?](?:\s|$)/g) || [text])
-        .slice(0, 2)
-        .join(" ")
-        .trim();
-    const short = cleanNarrationText(
-      firstSentence(r9MoveBeat(a, b, mA, "openA", ctx)) +
-        " " +
-        firstSentence(r9MoveBeat(b, a, mB, "openB", ctx)) +
-        " " +
-        firstSentence(r9MoveBeat(winner, loser, w3, "fin3", ctx)) +
-        " " +
-        reviveText +
-        ` ${winner.name} gewinnt. Punkt für Player ${wp === 1 ? "One" : "Two"}.`,
-    );
-    h.scenes.push({
-      duel: {
-        cards: [c1.id, c2.id],
-        chance: Math.round(chance * 100),
-        edge: Math.round(edge * 100),
-        winner: wp,
-      },
-      kind: "ko",
-      title: `Duell ${h.round + 1} · ${a.name} vs ${b.name}`,
-      arena,
-      event: `${c1.title} gegen ${c2.title} · ${ev.name}`,
-      attacker: winner,
-      defender: loser,
-      attackerP: wp,
-      defenderP: lp,
-      effect: effectFor(winner, w3),
-      text: cleanNarrationText(full),
-      shortText: short,
-      moves: [mA.name, mB.name, w3.name],
-    });
-    h.scores[wp]++;
-    for (const p of [1, 2]) {
-      const c = p === 1 ? c1 : c2;
-      h.energy[p] = Math.min(4, h.energy[p] - c.cost + 1 + (p === lp ? 1 : 0));
-      if (c.id === "ultimate") h.ultimateUsed[p] = true;
-    }
-    h.stage = "story";
-    h.ready = { 1: false, 2: false };
+  beginTurn(p){
+    const h=game.hybrid; h.turn=p; h.turnNo++; h.attachUsed=false; h.retreated=false;
+    h.retreatLock[p]=Math.max(0,(h.retreatLock[p]||0)-1);
+    const c=this.active(p); if(!c)return;
+    const heal=tcgBenchAbilityTotal(h,p,c,"benchHeal");
+    if(heal){h.hp[p][c.id]=Math.min(tcgMaxHp(c),h.hp[p][c.id]+heal);h.lastAction={kind:"support",text:L(`Bank-Support heilt ${c.name} um ${heal}.`,`Bench support heals ${c.name} for ${heal}.`)};}
+  }
+  attach(p,id){
+    const h=game.hybrid;if(!this.canAct(p)||h.attachUsed||!tcgInPlay(h,p,id))return false;
+    const c=tcgCardById(id);let amount=1;const aura=tcgCaptainAura(h,p);
+    if(aura?.type==="ARCANE"&&tcgType(c)==="ARCANE")amount=2;
+    h.energy[p][id]=(h.energy[p][id]||0)+amount;h.attachUsed=true;h.lastAction={kind:"energy",text:L(`${c.name} erhält ${amount} Energie.`,`${c.name} gets ${amount} Energy.`)};this.viewKey="";sync();this.render();return true;
+  }
+  retreat(p,targetId){
+    const h=game.hybrid,from=this.active(p);if(!this.canAct(p)||h.retreated||h.retreatLock[p]>0||!from||(h.bench[p]||[]).indexOf(targetId)<0)return false;
+    const cost=tcgRetreatCost(h,p,from);if((h.energy[p][from.id]||0)<cost)return false;
+    h.energy[p][from.id]-=cost;
+    const idx=h.bench[p].indexOf(targetId);h.bench[p][idx]=from.id;h.active[p]=targetId;h.retreated=true;
+    const fromAb=tcgAbility(from);if(tcgStatus(h,p,from.id).retreatReady)tcgStatus(h,p,from.id).retreatReady=0;
+    if(fromAb?.type==="freeRetreat"&&tcgType(tcgCardById(targetId))==="RUSH")tcgStatus(h,p,targetId).switchedBoost=Math.max(tcgStatus(h,p,targetId).switchedBoost,10);
+    this.onBecomeActive(p,targetId);h.lastAction={kind:"retreat",text:L(`${from.name} zieht sich zurück. ${tcgCardById(targetId).name} wird Active.`,`${from.name} retreats. ${tcgCardById(targetId).name} becomes Active.`)};this.viewKey="";sync();this.render();return true;
   }
   revive(p,id){
-    const h=game.hybrid;
-    if(!h||h.stage!=='choose'||![1,2].includes(p)||h.locked[p]||!settings.revive||h.reviveSpent[p])return false;
-    if(online.mode==='local'&&h.pickPlayer!==p)return false;
-    const fallen=h.scenes.some(s=>s.defenderP===p&&s.defender.id===id);
-    const oldIndex=h.lineup[p].indexOf(id);
-    if(!fallen||oldIndex<0||oldIndex>=h.round)return false;
-    [h.lineup[p][oldIndex],h.lineup[p][h.round]]=[h.lineup[p][h.round],h.lineup[p][oldIndex]];
-    h.reviveSpent[p]=true;h.lastRevive={p,id,round:h.round};this.viewKey='';sync();this.render();return true;
+    const h=game.hybrid,active=this.active(p),target=tcgCardById(id);if(!this.canAct(p)||!settings.revive||h.reviveSpent[p]||!active||!(h.ko[p]||[]).includes(id)||!target)return false;
+    const cost=tcgReviveCost(target);if((h.energy[p][active.id]||0)<cost)return false;
+    h.energy[p][active.id]-=cost;h.ko[p]=h.ko[p].filter(x=>x!==id);h.hp[p][id]=tcgRound10(tcgMaxHp(target)*.5);h.energy[p][id]=0;
+    if(h.bench[p].length<3)h.bench[p].push(id);else h.reserve[p].push(id);
+    h.reviveSpent[p]=true;h.lastAction={kind:"revive",text:L(`${target.name} kehrt mit ${h.hp[p][id]} HP zurück.`,`${target.name} returns with ${h.hp[p][id]} HP.`)};this.viewKey="";sync();this.render();return true;
   }
-  swap(p, index) {
-    const h = game.hybrid;
-    if (
-      !h ||
-      h.stage !== "choose" ||
-      ![1, 2].includes(p) ||
-      h.locked[p] ||
-      h.swapUsed[p] ||
-      h.energy[p] < 1 ||
-      !Number.isInteger(index) ||
-      index <= h.round ||
-      index >= h.lineup[p].length
-    )
-      return false;
-    if (online.mode === "local" && h.pickPlayer !== p) return false;
-    [h.lineup[p][h.round], h.lineup[p][index]] = [
-      h.lineup[p][index],
-      h.lineup[p][h.round],
-    ];
-    h.energy[p]--;
-    h.swapUsed[p] = true;
-    this.viewKey = "";
-    sync();
-    this.render();
-    return true;
+  promote(p,id){
+    const h=game.hybrid;if(h.stage!=="promote"||h.pendingPromote!==p||(online.mode!=="local"&&online.role!==p))return false;
+    let source="bench",idx=h.bench[p].indexOf(id);if(idx<0){source="reserve";idx=h.reserve[p].indexOf(id);}if(idx<0)return false;
+    if(source==="bench")h.bench[p].splice(idx,1);else h.reserve[p].splice(idx,1);
+    h.active[p]=id;
+    while(h.bench[p].length<3&&h.reserve[p].length)h.bench[p].push(h.reserve[p].shift());
+    this.onBecomeActive(p,id);h.stage="main";h.pendingPromote=null;h.ready={1:false,2:false};h.turn=p;h.attachUsed=false;h.retreated=false;h.stadiumIndex=(h.scenes.length)%TCG_STADIUMS.length;this.viewKey="";sync();this.render();return true;
   }
-  next(p) {
-    const h = game.hybrid;
-    if (!h || h.stage !== "story" || ![1, 2].includes(p)) return false;
-    h.ready[p] = true;
-    if (online.mode === "local" || (h.ready[1] && h.ready[2])) {
-      const total = Math.min(7, h.lineup[1].length, h.lineup[2].length);
-      if (Math.max(h.scores[1], h.scores[2]) >= 4 || h.round + 1 >= total) {
-        this.finish();
-        return true;
-      }
-      h.round++;
-      h.stage = "choose";
-      h.choices = { 1: null, 2: null };
-      h.locked = { 1: false, 2: false };
-      h.pickPlayer = 1;
+  captainCommand(p){
+    const h=game.hybrid,c=this.active(p),cap=tcgCardById(game.captains[p]);
+    if(!this.canAct(p)||!c||!cap||!tcgCaptainInPlay(h,p)||h.captainCommandUsed[p])return false;
+    const type=tcgType(cap),st=tcgStatus(h,p,c.id);
+    if(type==="FORCE")st.captainBoost=Math.max(st.captainBoost||0,20);
+    else if(type==="ARCANE")h.energy[p][c.id]=(h.energy[p][c.id]||0)+1;
+    else if(type==="RUSH")st.retreatReady=Math.max(st.retreatReady,1);
+    else st.shield=Math.max(st.shield,30);
+    h.captainCommandUsed[p]=true;h.lastAction={kind:"captain",text:type==="FORCE"?L(`Captain-Command: ${c.name}s nächster Angriff erhält +20.`,`Captain Command: ${c.name}'s next attack gets +20.`):type==="ARCANE"?L(`Captain-Command: ${c.name} erhält 1 Energie.`,`Captain Command: ${c.name} gains 1 Energy.`):type==="RUSH"?L(`Captain-Command: ${c.name}s nächster Rückzug kostet 1 weniger.`,`Captain Command: ${c.name}'s next retreat costs 1 less.`):L(`Captain-Command: ${c.name} erhält 30 Schild.`,`Captain Command: ${c.name} gains a 30 shield.`)};
+    this.viewKey="";sync();this.render();return true;
+  }
+  endTurn(p){
+    const h=game.hybrid;if(!this.canAct(p))return false;
+    const c=this.active(p),ab=tcgAbility(c);if(c&&ab?.type==="regen")h.hp[p][c.id]=Math.min(tcgMaxHp(c),h.hp[p][c.id]+(ab.value||10));
+    h.lastAction={kind:"pass",text:L(`Player ${p===1?"One":"Two"} beendet den Zug.`,`Player ${p===1?"One":"Two"} ends the turn.`)};
+    this.beginTurn(p===1?2:1);this.viewKey="";sync();this.render();return true;
+  }
+  attack(p,attackId){
+    const h=game.hybrid;if(!this.canAct(p))return false;
+    const a=this.active(p),d=this.active(p===1?2:1);if(!a||!d)return false;
+    const ap=p,dp=p===1?2:1,attack=tcgAttacks(a).find(x=>x.id===attackId);if(!attack)return false;
+    const req=tcgAttackCost(h,p,a,attack);if((h.energy[p][a.id]||0)<req)return false;
+    let damage=attack.damage, notesDe=[],notesEn=[],ignoreResistance=attack.special?.type==="ignoreResistance"||tcgAbility(a)?.type==="pierce";
+    const ast=tcgStatus(h,ap,a.id),dst=tcgStatus(h,dp,d.id),aab=tcgAbility(a),dab=tcgAbility(d);
+    if(ast.growth){damage+=ast.growth;notesDe.push(`Growth +${ast.growth}`);notesEn.push(`Growth +${ast.growth}`);ast.growth=0;}
+    if(ast.firstStrike&&aab?.type==="firstStrike"){damage+=aab.value||10;notesDe.push("Kampfinstinkt");notesEn.push("Battle Instinct");}
+    if(ast.switchedBoost){damage+=ast.switchedBoost;notesDe.push(`Switch +${ast.switchedBoost}`);notesEn.push(`Switch +${ast.switchedBoost}`);ast.switchedBoost=0;}
+    if(ast.captainBoost){damage+=ast.captainBoost;notesDe.push(`Captain Command +${ast.captainBoost}`);notesEn.push(`Captain Command +${ast.captainBoost}`);ast.captainBoost=0;}
+    if(aab?.type==="rage"&&h.hp[ap][a.id]<=tcgMaxHp(a)/2){damage+=aab.value||20;notesDe.push("Rage");notesEn.push("Rage");}
+    if(aab?.type==="copyBoost"&&tcgBestStat(d)>tcgBestStat(a)){damage+=aab.value||10;notesDe.push("Copy Ability");notesEn.push("Copy Ability");}
+    const benchBoost=tcgBenchAbilityTotal(h,ap,a,"benchBoost");if(benchBoost){damage+=benchBoost;notesDe.push(`Bank-Synergie +${benchBoost}`);notesEn.push(`Bench synergy +${benchBoost}`);}
+    const aura=tcgCaptainAura(h,ap);if(aura?.type==="FORCE"&&tcgType(a)==="FORCE"){damage+=10;notesDe.push("Captain-Aura +10");notesEn.push("Captain Aura +10");}
+    if(attack.special?.type==="arcaneBreaker"&&tcgType(d)==="ARCANE"){damage+=attack.special.value||20;notesDe.push("Anti-Magic +20");notesEn.push("Anti-Magic +20");}
+    if(attack.special?.type==="lowHpBurst"&&h.hp[ap][a.id]<=tcgMaxHp(a)/2){damage+=attack.special.value||20;notesDe.push("Burst +20");notesEn.push("Burst +20");}
+    const stadium=tcgStadium(h);if(stadium.damageOut)damage=stadium.damageOut(a,d,damage);
+    const typeResult=tcgTypeResolution(a,d,damage,ignoreResistance);damage=typeResult.damage;if(typeResult.kind!=="normal"){notesDe.push(typeResult.de);notesEn.push(typeResult.en);}
+    if(dab?.type==="wardArcane"&&tcgType(a)==="ARCANE"){damage=Math.max(0,damage-(dab.value||20));notesDe.push(`${uiLang==="en"?dab.nameEn:dab.nameDe} −${dab.value||20}`);notesEn.push(`${dab.nameEn} −${dab.value||20}`);if(d.name==="Meliodas")dst.switchedBoost=Math.max(dst.switchedBoost,10);}
+    if(dab?.type==="wardForce"&&tcgType(a)==="FORCE"){damage=Math.max(0,damage-(dab.value||20));notesDe.push(`${dab.nameDe} −${dab.value||20}`);notesEn.push(`${dab.nameEn} −${dab.value||20}`);}
+    const benchGuard=tcgBenchAbilityTotal(h,dp,d,"benchGuard");if(benchGuard){damage=Math.max(0,damage-benchGuard);notesDe.push(`Bank-Schutz −${benchGuard}`);notesEn.push(`Bench protection −${benchGuard}`);}
+    const daura=tcgCaptainAura(h,dp);if(daura?.type==="GUARD"&&tcgType(d)==="GUARD"){damage=Math.max(0,damage-10);notesDe.push("Captain-Aura −10");notesEn.push("Captain Aura −10");}
+    if(dst.shield){const block=Math.min(dst.shield,damage);damage-=block;dst.shield-=block;notesDe.push(`Schild −${block}`);notesEn.push(`Shield −${block}`);}
+    if(dab?.type==="adapt"&&h.lastAttackAgainst?.[dp]?.id===attack.id){damage=Math.max(0,damage-(dab.value||20));notesDe.push(`Adaptation −${dab.value||20}`);notesEn.push(`Adaptation −${dab.value||20}`);}
+    if(stadium.damageIn)damage=stadium.damageIn(a,d,damage);
+    damage=tcgRound10(damage);h.lastAttackAgainst ||= {1:null,2:null};h.lastAttackAgainst[dp]={id:attack.id,attacker:a.id};
+    h.hp[dp][d.id]=Math.max(0,h.hp[dp][d.id]-damage);ast.firstStrike=false;
+    if(attack.special?.type==="heal"||attack.special?.type==="drain")h.hp[ap][a.id]=Math.min(tcgMaxHp(a),h.hp[ap][a.id]+(attack.special.value||10));
+    if(attack.special?.type==="shield")ast.shield=Math.max(ast.shield,attack.special.value||20);
+    if(attack.special?.type==="retreatReady")ast.retreatReady=1;
+    if(attack.special?.type==="retreatLock")h.retreatLock[dp]=2;
+    if(h.hp[dp][d.id]>0&&dab?.type==="growth")dst.growth=Math.min(30,dst.growth+(dab.value||10));
+    if(h.hp[dp][d.id]>0&&dab?.type==="battery"&&tcgType(a)==="ARCANE"&&dst.batteryTurn!==h.turnNo){h.energy[dp][d.id]=(h.energy[dp][d.id]||0)+1;dst.batteryTurn=h.turnNo;notesDe.push("Absorption +1 Energie");notesEn.push("Absorption +1 Energy");}
+    const entry={attacker:a,defender:d,attackerP:ap,defenderP:dp,attack,damage,noteDe:notesDe.join(" · "),noteEn:notesEn.join(" · ")};h.battleLog.push(entry);h.lastAction={kind:"attack",text:L(`${a.name} · ${attack.name}: ${damage} Schaden.`,`${a.name} · ${attack.name}: ${damage} damage.`)};
+    if(h.hp[dp][d.id]<=0){this.ko(entry);return true;}
+    if(aab?.type==="regen")h.hp[ap][a.id]=Math.min(tcgMaxHp(a),h.hp[ap][a.id]+(aab.value||10));
+    this.beginTurn(dp);this.viewKey="";sync();this.render();return true;
+  }
+  ko(entry){
+    const h=game.hybrid,wp=entry.attackerP,lp=entry.defenderP,winner=entry.attacker,loser=entry.defender;
+    h.scores[wp]++;h.ko[lp].push(loser.id);h.active[lp]=null;h.energy[lp][loser.id]=0;
+    const story=tcgBuildStory(h,entry,h.scenes.length+1),stadium=tcgStadium(h);
+    const scene={kind:"ko",title:uiLang==="en"?story.titleEn:story.titleDe,titleDe:story.titleDe,titleEn:story.titleEn,arena:stadium.name,event:`${entry.attack.name} · ${tcgTypeText(tcgType(winner))}`,attacker:winner,defender:loser,attackerP:wp,defenderP:lp,effect:effectFor(winner,entry.attack),text:uiLang==="en"?story.textEn:story.textDe,textDe:story.textDe,textEn:story.textEn,shortText:uiLang==="en"?story.shortEn:story.shortDe,shortDe:story.shortDe,shortEn:story.shortEn,moves:[entry.attack.name],duel:{damage:entry.damage,type:tcgType(winner),attack:entry.attack.name,winner:wp}};
+    h.scenes.push(scene);h.battleLog=[];h.stage="story";h.pendingPromote=lp;h.ready={1:false,2:false};this.viewKey="";sync();this.render();
+  }
+  next(p){
+    const h=game.hybrid;if(!h||h.stage!=="story"||![1,2].includes(p))return false;h.ready[p]=true;
+    if(online.mode==="local"||(h.ready[1]&&h.ready[2])){
+      if(Math.max(h.scores[1],h.scores[2])>=4){this.finish();return true;}
+      const lp=h.pendingPromote;if(!lp||(!(h.bench[lp]||[]).length&&!(h.reserve[lp]||[]).length)){this.finish();return true;}
+      h.stage="promote";h.turn=lp;h.attachUsed=false;h.retreated=false;
     }
-    sync();
-    this.render();
-    return true;
+    this.viewKey="";sync();this.render();return true;
   }
-  finish() {
-    const h = game.hybrid,
-      w = h.scores[1] > h.scores[2] ? 1 : 2;
-    const winning = h.scenes
-      .filter((s) => s.attackerP === w)
-      .map((s) => s.attacker);
-    const mvp =
-      [...winning].sort((a, b) => impact(b) - impact(a))[0] || game.teams[w][0];
-    game.result = {
-      winner: w,
-      wins1: h.scores[1],
-      wins2: h.scores[2],
-      rounds: h.scenes.map((s) => ({
-        arena: s.arena,
-        event: s.event,
-        winner: s.attackerP,
-      })),
-      scenes: clone(h.scenes),
-      mvp,
-      reviveSpent: h.reviveSpent,
-    };
-    game.phase = "result";
-    stopTTS();
-    this.viewKey = "";
-    sync();
-    renderResult();
+  finish(){
+    const h=game.hybrid,w=h.scores[1]>h.scores[2]?1:2,winning=h.scenes.filter(s=>s.attackerP===w).map(s=>s.attacker);
+    const counts={};h.scenes.forEach(s=>counts[s.attacker.id]=(counts[s.attacker.id]||0)+1);
+    const mvp=[...game.teams[w]].sort((a,b)=>(counts[b.id]||0)-(counts[a.id]||0)||impact(b)-impact(a))[0]||winning[0]||game.teams[w][0];
+    game.result={winner:w,wins1:h.scores[1],wins2:h.scores[2],rounds:h.scenes.map(s=>({arena:s.arena,event:s.event,winner:s.attackerP})),scenes:clone(h.scenes),mvp,reviveSpent:h.reviveSpent};
+    game.phase="result";stopTTS();this.viewKey="";sync();renderResult();
   }
-  render() {
-    const h = this.init(),
-      viewer = online.mode === "local" ? h.pickPlayer : online.role;
-    const key = `${game.seed}|${game.matchNo}|${h.round}|${h.stage}|${viewer}|${h.stage === "choose" ? JSON.stringify([h.locked, h.lineup, h.swapUsed, h.reviveSpent]) + !!Net.pendingAction + online.connected : ""}`;
-    if (this.viewKey === key && $("#hybridBattle")) {
-      this.updateReady();
-      return;
-    }
-    this.viewKey = key;
-    stopTTS();
-    this.paused = false;
-    const a = this.fighter(1),
-      b = this.fighter(2),
-      s = h.scenes[h.round];
-    const story = h.stage === "story",
-      score1 = h.scores[1],
-      score2 = h.scores[2];
-    app.innerHTML = html`<section
-      id="hybridBattle"
-      class="screen hybrid-battle ${story
-        ? "duel-resolved winner-" + s.attackerP
-        : "duel-choosing"}"
-    >
-      <div class="phase">
-        <div>
-          <div class="kicker">
-            DUELL ${h.round + 1} / 7 · VIER SIEGE ENTSCHEIDEN
-          </div>
-          <h1>${story ? "KARTEN AUF DEN TISCH" : "WAS SPIELST DU?"}</h1>
-        </div>
-        <div class="hybrid-score">
-          <span class="p1c">${score1}</span> :
-          <span class="p2c">${score2}</span>
-        </div>
-      </div>
-      <div class="hybrid-fighters">
-        <article>
-          <img id="hybridA" src="${avatar(a.name, a.franchise)}" />
-          <h2>${esc(a.name)}</h2>
-          <p>${esc(a.franchise)} · ${a.tier}</p>
-        </article>
-        <div class="hybrid-vs">VS</div>
-        <article>
-          <img id="hybridB" src="${avatar(b.name, b.franchise)}" />
-          <h2>${esc(b.name)}</h2>
-          <p>${esc(b.franchise)} · ${b.tier}</p>
-        </article>
-      </div>
-      ${story
-        ? html`${duelRevealHTML(s)}
-            <div class="hybrid-story">
-              <div class="kicker">${esc(s.event)}</div>
-              <p id="duelNarration">${esc(s.shortText)}</p>
-              <details>
-                <summary>Vollständige Kampfgeschichte lesen</summary>
-                <p id="hybridFull" class="full-narrative">
-                  ${esc(s.aiText || s.text)}
-                </p>
-                ${settings.aiStory
-                  ? '<button class="btn secondary" onclick="hybridBattle.enrich()">OPTIONALE KI-LANGFASSUNG</button>'
-                  : ""}<button
-                  class="btn secondary"
-                  onclick="hybridBattle.readFull()"
-                >
-                  LANGFASSUNG VORLESEN
-                </button>
-              </details>
-            </div>
-            <div class="actions">
-              <button
-                id="hybridVoice"
-                class="btn secondary"
-                onclick="hybridBattle.toggleVoice()"
-              >
-                ${settings.tts ? "ERZÄHLUNG PAUSIEREN" : "ERZÄHLUNG ANHÖREN"}</button
-              ><button
-                id="hybridContinue"
-                class="btn gold"
-                onclick="hybridContinue()"
-              >
-                ${Math.max(h.scores[1], h.scores[2]) >= 4 || h.round === 6
-                  ? "ZUM ERGEBNIS"
-                  : "NÄCHSTES DUELL"}
-              </button>
-            </div>
-            <p id="hybridReady" role="status"></p>`
-        : html`<div class="hybrid-hand-head">
-              <h2>
-                Player ${viewer === 1 ? "One" : "Two"} · ${h.energy[viewer]} / 4
-                Energie
-              </h2>
-              <p>
-                Angriff schlägt Finte · Finte schlägt Konter · Konter schlägt
-                Angriff. Nach jedem Duell +1 Energie; nach einer Niederlage +1
-                extra. Das erhöht deine Siegchance; Figurenstärke und Arena
-                zählen ebenfalls.
-              </p>
-            </div>
-            ${hybridReserveHTML(h, viewer)}${hybridReviveHTML(h, viewer)}
-            <div class="hybrid-hand">
-              ${DUEL_CARDS.map(
-                (c) =>
-                  html`<button
-                    class="hybrid-card ${c.id}"
-                    ${h.locked[viewer] ||
-                    !!Net.pendingAction ||
-                    !this.available(viewer, c.id) ||
-                    (online.mode !== "local" && !online.connected)
-                      ? "disabled"
-                      : ""}
-                    onclick="hybridChoose('${c.id}')"
-                  >
-                    <small
-                      >${c.cost}
-                      ENERGIE${c.id === "ultimate" ? " · EINMALIG" : ""}</small
-                    >
-                    <h3>${c.title}</h3>
-                    <strong
-                      >${esc(
-                        duelTechnique(viewer === 1 ? a : b, c.id)?.name ||
-                          "Technik",
-                      )}</strong
-                    >
-                    <p>${c.detail}</p>
-                    ${h.ultimateUsed[viewer] && c.id === "ultimate"
-                      ? "<b>BEREITS EINGESETZT</b>"
-                      : ""}
-                  </button>`,
-              ).join("")}
-            </div>
-            <p role="status">
-              ${h.locked[viewer]
-                ? "Deine Karte liegt verdeckt. Warte auf den Gegner."
-                : Net.pendingAction
-                  ? "Deine Wahl wird übertragen…"
-                  : "Eine Karte pro Duell. Die Gegenwahl bleibt bis zur Aufdeckung geheim."}
-            </p>`}
+  render(){
+    const h=this.init(),viewer=online.mode==="local"?h.turn:(online.role||1),scene=h.scenes[h.scenes.length-1],story=h.stage==="story";
+    const key=`${game.seed}|${game.matchNo}|${h.turnNo}|${h.stage}|${viewer}|${JSON.stringify([h.active,h.bench,h.reserve,h.ko,h.hp,h.energy,h.scores,h.attachUsed,h.retreated,h.reviveSpent,h.pendingPromote,h.ready,h.lastAction,h.captainCommandUsed])}|${uiLang}|${!!Net.pendingAction}|${online.connected}`;
+    if(this.viewKey===key&&$("#hybridBattle")){this.updateReady();return;}this.viewKey=key;stopTTS();this.paused=false;
+    const stadium=tcgStadium(h),canViewerAct=(online.mode==="local"||online.role===h.turn);
+    app.innerHTML=html`<section id="hybridBattle" class="screen tcg-shell ${story?"tcg-story-mode":""}">
+      <div class="tcg-topline"><div><div class="kicker">NULL ARENA V3 · CARDGAME</div><h1>${story?L("K.O. — CINEMATIC STORY","K.O. — CINEMATIC STORY"):h.stage==="promote"?L("NEUEN ACTIVE WÄHLEN","CHOOSE A NEW ACTIVE"):L("CARDGAME","CARDGAME")}</h1></div><div class="hybrid-score"><span class="p1c">${h.scores[1]}</span> : <span class="p2c">${h.scores[2]}</span></div></div>
+      <div class="tcg-type-strip"><span>💥 ${L("Kraft","Force")} → 🛡 ${L("Panzer","Guard")} → ⚡ ${L("Tempo","Rush")} → ✦ ${L("Hax","Arcane")} → 💥</span><small>${L("Weakness ×1,5 · Resistance −20. Alle Werte und Effekte stehen offen auf den Karten.","Weakness ×1.5 · Resistance −20. All values and effects are visible on the cards.")}</small></div>
+      <div class="tcg-stadium"><b>🏟 ${esc(stadium.name)}</b><span>${esc(uiLang==="en"?stadium.en:stadium.de)}</span></div>
+      ${story?html`<div class="tcg-ko-reveal"><div class="tcg-ko-badge">K.O.</div><h2>${esc(scene.title)}</h2><p id="duelNarration">${esc(tcgSceneText(scene,true))}</p><div class="tcg-last-hit"><b>${esc(scene.duel?.attack||scene.moves?.[0]||"")}</b><span>${scene.duel?.damage||0} DMG</span></div></div>
+        <div class="hybrid-story"><div class="kicker">${esc(scene.event)}</div><details open><summary>${L("Kampfgeschichte","Battle story")}</summary><p id="hybridFull" class="full-narrative">${esc(scene.aiText||tcgSceneText(scene,false))}</p>${settings.aiStory?'<button class="btn secondary" onclick="hybridBattle.enrich()">OPTIONALE KI-LANGFASSUNG</button>':""}<button class="btn secondary" onclick="hybridBattle.readFull()">${L("LANGFASSUNG VORLESEN","READ FULL STORY")}</button></details></div>
+        <div class="actions"><button id="hybridVoice" class="btn secondary" onclick="hybridBattle.toggleVoice()">${settings.tts?L("ERZÄHLUNG PAUSIEREN","PAUSE NARRATION"):L("ERZÄHLUNG ANHÖREN","PLAY NARRATION")}</button><button id="hybridContinue" class="btn gold" onclick="hybridContinue()">${Math.max(h.scores[1],h.scores[2])>=4?L("ZUM ERGEBNIS","RESULT"):L("WEITER","CONTINUE")}</button></div><p id="hybridReady" role="status"></p>`:
+      html`<div class="tcg-turn-banner ${h.turn===1?"p1":"p2"}"><b>${h.stage==="promote"?`PLAYER ${h.pendingPromote===1?"ONE":"TWO"} · ${L("ACTIVE WÄHLEN","CHOOSE ACTIVE")}`:`PLAYER ${h.turn===1?"ONE":"TWO"} · ${L("AM ZUG","TURN")}`}</b><span>${h.lastAction?esc(h.lastAction.text):L("Lege Energie an, baue deine Bank auf und wähle den richtigen Angriff.","Attach Energy, build your Bench and choose the right attack.")}</span></div>
+        <div class="tcg-board">${tcgSideHTML(h,viewer===1?2:1,viewer,true)}<div class="tcg-center-line"><span>VS</span></div>${tcgSideHTML(h,viewer,viewer,false)}</div>
+        ${h.stage==="main"?tcgTurnToolsHTML(h,viewer,viewer):""}${tcgRevivePanelHTML(h,viewer,viewer)}
+        ${h.stage==="promote"?html`<div class="tcg-promote-note">${L("Wähle eine Bank- oder Reservekarte. Danach wird die Bank automatisch aus der Reserve aufgefüllt.","Choose a Bench or Reserve card. The Bench is then refilled automatically from Reserve.")}</div>`:""}
+        <p class="tcg-status" role="status">${online.mode!=="local"&&!online.connected?L("Online-Verbindung wird wiederhergestellt…","Restoring online connection…"):h.stage==="main"&&h.turn!==viewer?L("Der Gegner ist am Zug.","Opponent's turn."):h.stage==="main"&&!canViewerAct?L("Warte auf Synchronisierung…","Waiting for sync…"):""}</p>`}
     </section>`;
-    for (const [p, c] of [
-      ["A", a],
-      ["B", b],
-    ])
-      resolveImage(c).then((src) => {
-        const el = $("#hybrid" + p);
-        if (el?.isConnected) el.src = src;
-      });
-    if (story) {
-      this.audioKey = key;
-      if (settings.tts)
-        narrateBlock(s.shortText, () => {
-          if (this.audioKey === key) {
-            const btn = $("#hybridVoice");
-            if (btn) btn.textContent = "ERZÄHLUNG NOCHMAL";
-          }
-        });
-      this.updateReady();
-    }
+    const seen=new Set();document.querySelectorAll("[data-tcg-img]").forEach(el=>{const id=el.getAttribute("data-tcg-img");if(seen.has(id))return;seen.add(id);const c=tcgCardById(id);resolveImage(c).then(src=>document.querySelectorAll(`[data-tcg-img="${CSS.escape(id)}"]`).forEach(img=>{if(img.isConnected)img.src=src;}));});
+    if(story){this.audioKey=key;if(settings.tts)narrateBlock(tcgSceneText(scene,true),()=>{if(this.audioKey===key){const btn=$("#hybridVoice");if(btn)btn.textContent=L("ERZÄHLUNG NOCHMAL","PLAY AGAIN");}});this.updateReady();}
   }
-  updateReady() {
-    const h = game?.hybrid;
-    if (h?.stage !== "story") return;
-    const p = online.role || 1,
-      btn = $("#hybridContinue"),
-      hint = $("#hybridReady");
-    if (btn)
-      btn.disabled =
-        online.mode !== "local" &&
-        (h.ready[p] || !!Net.pendingAction || !online.connected);
-    if (hint)
-      hint.textContent =
-        online.mode === "local"
-          ? "Du kannst zuhören oder direkt weiterspielen."
-          : h.ready[p]
-            ? "Bereit – warte, bis dein Gegner seine Szene beendet hat."
-            : "Weiter geht es, wenn beide bereit sind.";
-  }
-  toggleVoice() {
-    const btn = $("#hybridVoice");
-    if (this.paused) {
-      speechSynthesis.resume();
-      this.paused = false;
-      btn.textContent = "ERZÄHLUNG PAUSIEREN";
-    } else if (window.speechSynthesis?.speaking) {
-      speechSynthesis.pause();
-      this.paused = true;
-      btn.textContent = "ERZÄHLUNG FORTSETZEN";
-    } else {
-      settings.tts = true;
-      narrateBlock(game.hybrid.scenes[game.hybrid.round].shortText, () => {
-        if (btn.isConnected) btn.textContent = "ERZÄHLUNG NOCHMAL";
-      });
-      btn.textContent = "ERZÄHLUNG PAUSIEREN";
-    }
-  }
-  async enrich() {
-    if (!window.puter?.auth?.isSignedIn?.())
-      return toast(
-        "Aktiviere Puter zuerst in den Einstellungen. Die lokale Geschichte bleibt verfügbar.",
-      );
-    const activeGame = game,
-      scene = game.hybrid.scenes[game.hybrid.round];
-    toast("Optionale KI-Langfassung wird erstellt. Du kannst weiterspielen.");
-    const text = await getSceneNarration(
-      scene,
-      game.hybrid.round,
-      battleState.nonce,
-    );
-    if (
-      game === activeGame &&
-      game.hybrid.scenes[game.hybrid.round] === scene
-    ) {
-      const el = $("#hybridFull");
-      if (el) el.textContent = text;
-    }
-  }
-  readFull() {
-    settings.tts = true;
-    this.paused = false;
-    stopTTS();
-    narrateBlock(
-      game.hybrid.scenes[game.hybrid.round].aiText ||
-        game.hybrid.scenes[game.hybrid.round].text,
-      () => {
-        const btn = $("#hybridVoice");
-        if (btn) btn.textContent = "ERZÄHLUNG NOCHMAL";
-      },
-    );
-  }
+  updateReady(){const h=game?.hybrid;if(h?.stage!=="story")return;const p=online.role||1,btn=$("#hybridContinue"),hint=$("#hybridReady");if(btn)btn.disabled=online.mode!=="local"&&(h.ready[p]||!!Net.pendingAction||!online.connected);if(hint)hint.textContent=online.mode==="local"?L("Du kannst zuhören oder direkt weiterspielen.","Listen or continue immediately."):h.ready[p]?L("Bereit – warte auf den Gegner.","Ready — waiting for opponent."):L("Weiter geht es, wenn beide bereit sind.","Continue when both players are ready.");}
+  toggleVoice(){const btn=$("#hybridVoice"),scene=game.hybrid.scenes[game.hybrid.scenes.length-1];if(this.paused){speechSynthesis.resume();this.paused=false;btn.textContent=L("ERZÄHLUNG PAUSIEREN","PAUSE NARRATION");}else if(window.speechSynthesis?.speaking){speechSynthesis.pause();this.paused=true;btn.textContent=L("ERZÄHLUNG FORTSETZEN","RESUME NARRATION");}else{settings.tts=true;narrateBlock(tcgSceneText(scene,true),()=>{if(btn?.isConnected)btn.textContent=L("ERZÄHLUNG NOCHMAL","PLAY AGAIN");});btn.textContent=L("ERZÄHLUNG PAUSIEREN","PAUSE NARRATION");}}
+  async enrich(){if(!window.puter?.auth?.isSignedIn?.())return toast(L("Aktiviere Puter zuerst in den Einstellungen. Die lokale Geschichte bleibt verfügbar.","Enable Puter in settings first. The local story remains available."));const activeGame=game,scene=game.hybrid.scenes[game.hybrid.scenes.length-1];toast(L("Optionale KI-Langfassung wird erstellt.","Creating optional AI extended story."));scene.text=tcgSceneText(scene,false);const text=await getSceneNarration(scene,game.hybrid.scenes.length-1,battleState.nonce);if(game===activeGame&&game.hybrid.scenes.includes(scene)){scene.aiText=text;const el=$("#hybridFull");if(el)el.textContent=text;}}
+  readFull(){settings.tts=true;this.paused=false;stopTTS();const scene=game.hybrid.scenes[game.hybrid.scenes.length-1];narrateBlock(scene.aiText||tcgSceneText(scene,false),()=>{const btn=$("#hybridVoice");if(btn)btn.textContent=L("ERZÄHLUNG NOCHMAL","PLAY AGAIN");});}
 }
-const hybridBattle = new HybridBattleDirector();
-function hybridChoose(id) {
-  const h = game.hybrid;
-  dispatch("hybridChoose", {
-    id,
-    round: h.round,
-    seed: game.seed,
-    matchNo: game.matchNo,
-  });
-}
-function hybridContinue() {
+const hybridBattle=new HybridBattleDirector();
+// Live combat voice: every attack is spoken. On a KO, the short cinematic story follows after the attack callout.
+const _cardgameAttack = hybridBattle.attack.bind(hybridBattle);
+hybridBattle.attack = function(p, attackId){
+  const before = game?.hybrid, a = before ? tcgCardById(before.active[p]) : null, d = before ? tcgCardById(before.active[p===1?2:1]) : null;
+  const atk = a ? tcgAttacks(a).find(x=>x.id===attackId) : null;
+  const sceneCount = before?.scenes?.length || 0;
+  const ok = _cardgameAttack(p,attackId);
+  if(!ok || !settings.tts || !a || !d || !atk) return ok;
+  const h=game?.hybrid; if(!h)return ok;
+  const newScene = (h.scenes?.length || 0) > sceneCount ? h.scenes[h.scenes.length-1] : null;
+  const entry = newScene ? null : h.battleLog?.[h.battleLog.length-1];
+  const damage = newScene?.duel?.damage ?? entry?.damage ?? 0;
+  const note = uiLang==="en" ? (entry?.noteEn || "") : (entry?.noteDe || "");
+  const attackLine = uiLang==="en" ? `${a.name} uses ${atk.name}. ${d.name} takes ${damage} damage${note?`. ${note}`:""}.` : `${a.name} setzt ${atk.name} ein. ${d.name} erleidet ${damage} Schaden${note?`. ${note}`:""}.`;
   stopTTS();
-  const h = game.hybrid;
-  dispatch("hybridNext", {
-    round: h.round,
-    seed: game.seed,
-    matchNo: game.matchNo,
+  narrateBlock(cleanNarrationText(attackLine),()=>{
+    if(newScene && game?.phase==="battle" && game.hybrid?.stage==="story"){
+      const longStory=tcgSceneText(newScene,false)||"";
+      const sentences=(longStory.match(/[^.!?]+[.!?](?:\s|$)/g)||[longStory]).map(x=>x.trim()).filter(Boolean);
+      const cinematic=sentences.slice(0,Math.min(2,sentences.length)).join(" ");
+      if(cinematic) narrateBlock(cinematic);
+    }
   });
+  return ok;
+};
+function hybridAttach(id){const h=game.hybrid;dispatch("hybridAttach",{id,turnNo:h.turnNo,seed:game.seed,matchNo:game.matchNo});}
+function hybridAttack(id){const h=game.hybrid;dispatch("hybridAttack",{id,turnNo:h.turnNo,seed:game.seed,matchNo:game.matchNo});}
+function hybridEndTurn(){const h=game.hybrid;dispatch("hybridEnd",{turnNo:h.turnNo,seed:game.seed,matchNo:game.matchNo});}
+function hybridCaptainCommand(){const h=game.hybrid;dispatch("hybridCaptain",{turnNo:h.turnNo,seed:game.seed,matchNo:game.matchNo});}
+function hybridRetreat(id){const h=game.hybrid;dispatch("hybridRetreat",{id,turnNo:h.turnNo,seed:game.seed,matchNo:game.matchNo});}
+function hybridPromote(id){const h=game.hybrid;dispatch("hybridPromote",{id,turnNo:h.turnNo,seed:game.seed,matchNo:game.matchNo});}
+function hybridRevive(id){const h=game.hybrid;dispatch("hybridRevive",{id,turnNo:h.turnNo,seed:game.seed,matchNo:game.matchNo});}
+function hybridContinue(){stopTTS();const h=game.hybrid;dispatch("hybridNext",{turnNo:h.turnNo,seed:game.seed,matchNo:game.matchNo});}
+function handleHybridAction(action,p,player){
+  const h=game?.hybrid;if(!h||game.phase!=="battle"||(online.mode!=="local"&&!online.connected)||p.seed!==game.seed||p.matchNo!==game.matchNo)return false;
+  if(action!=="hybridNext"&&p.turnNo!==h.turnNo)return false;
+  if(action==="hybridAttach")return hybridBattle.attach(player,p.id);
+  if(action==="hybridAttack")return hybridBattle.attack(player,p.id);
+  if(action==="hybridEnd")return hybridBattle.endTurn(player);
+  if(action==="hybridCaptain")return hybridBattle.captainCommand(player);
+  if(action==="hybridRetreat")return hybridBattle.retreat(player,p.id);
+  if(action==="hybridPromote")return hybridBattle.promote(player,p.id);
+  if(action==="hybridRevive")return hybridBattle.revive(player,p.id);
+  return action==="hybridNext"?hybridBattle.next(player):false;
 }
-function handleHybridAction(action, p, player) {
-  if (
-    !game?.hybrid ||
-    game.phase !== "battle" ||
-    (online.mode !== "local" && !online.connected) ||
-    p.round !== game.hybrid.round ||
-    p.seed !== game.seed ||
-    p.matchNo !== game.matchNo
-  )
-    return false;
-  if(action === "hybridRevive")return hybridBattle.revive(player,p.id);
-  if (action === "hybridSwap") return hybridBattle.swap(player, p.index);
-  return action === "hybridChoose"
-    ? hybridBattle.choose(player, p.id)
-    : hybridBattle.next(player);
-}
-
 
 /** Teilbares Ergebnis: Score und Teams im PNG und als eigenständiger Ergebnis-Link. */
 function resultSnapshot() {
@@ -16259,106 +16421,7 @@ function openSharedResult() {
 }
 
 
-/** Presentation reads the resolved state. Animations never decide or delay a turn. */
-function hybridReviveHTML(h,p){
- if(!settings.revive)return '';
- const disabled=h.locked[p]||h.reviveSpent[p]||!!Net.pendingAction||(online.mode!=='local'&&!online.connected);
- const fallen=[...new Set(h.scenes.filter(s=>s.defenderP===p).map(s=>s.defender.id))];
- return html`<details class="reserve-panel revive-panel"><summary>${h.reviveSpent[p]?'Revive bereits eingesetzt':'Revive · eine besiegte Figur zurückholen'}</summary><p>Die gewählte Figur ersetzt deine aktuelle Aufstellung für dieses Duell. Einmal pro Match. Vergebene Punkte bleiben bestehen.</p><div class="reserve-cards">${fallen.map(id=>html`<button class="btn secondary" ${disabled?'disabled':''} onclick="hybridRevive('${id}')">✦ ${esc(BY_ID.get(id).name)} wiederbeleben</button>`).join('')||'<span>Noch keine besiegte Figur.</span>'}</div></details>${h.lastRevive?.round===h.round?html`<p class="revive-notice">✦ ${esc(BY_ID.get(h.lastRevive.id).name)} ist wieder im Feld.</p>`:''}`;
-}
-function hybridRevive(id){const h=game.hybrid;dispatch('hybridRevive',{id,round:h.round,seed:game.seed,matchNo:game.matchNo});}
-function hybridReserveHTML(h, p) {
-  const disabled =
-    h.locked[p] ||
-    h.swapUsed[p] ||
-    h.energy[p] < 1 ||
-    !!Net.pendingAction ||
-    (online.mode !== "local" && !online.connected);
-  const history = h.scenes
-    .slice(-3)
-    .map((s) => s.duel?.cards?.[p === 1 ? 1 : 0])
-    .filter(Boolean);
-  return html`<div class="duel-tools">
-      <div class="energy-pips" aria-label="${h.energy[p]} von 4 Energie">
-        ${Array.from(
-          { length: 4 },
-          (_, i) => `<i class="${i < h.energy[p] ? "filled" : ""}"></i>`,
-        ).join("")}
-      </div>
-      <span
-        >${history.length
-          ? "Gegner zuletzt: " +
-            history
-              .map((id) => DUEL_CARDS.find((c) => c.id === id)?.title)
-              .join(" → ")
-          : "Noch keine gegnerische Karte aufgedeckt."}</span
-      >
-    </div>
-    <details class="reserve-panel">
-      <summary>
-        ${h.swapUsed[p]
-          ? "Wechsel bereits genutzt"
-          : "Figur wechseln · 1 Energie · einmal pro Match"}
-      </summary>
-      <p>
-        Hol eine verbleibende Figur jetzt ins Duell. Die aktuelle Figur nimmt
-        ihren späteren Platz ein.
-      </p>
-      <div class="reserve-cards">
-        ${h.lineup[p]
-          .slice(h.round + 1)
-          .map((id, i) => {
-            const c = BY_ID.get(id);
-            return html`<button
-              class="btn secondary"
-              ${disabled ? "disabled" : ""}
-              onclick="hybridSwap(${h.round + 1 + i})"
-            >
-              ${esc(c.name)} <small>${c.tier}</small>
-            </button>`;
-          })
-          .join("") || "<span>Keine Figuren mehr auf der Bank.</span>"}
-      </div>
-    </details>`;
-}
-function hybridSwap(index) {
-  const h = game.hybrid;
-  dispatch("hybridSwap", {
-    index,
-    round: h.round,
-    seed: game.seed,
-    matchNo: game.matchNo,
-  });
-}
-function duelRevealHTML(s) {
-  const d = s.duel;
-  if (!d) return "";
-  const cards = d.cards.map((id) => DUEL_CARDS.find((c) => c.id === id));
-  return html`<div class="duel-reveal" aria-label="Aufgedeckte Karten">
-      <div class="reveal-card p1">
-        <small>PLAYER ONE</small><b>${cards[0].title}</b
-        ><span>${cards[0].cost} Energie</span>
-      </div>
-      <div class="clash-mark">⚔</div>
-      <div class="reveal-card p2">
-        <small>PLAYER TWO</small><b>${cards[1].title}</b
-        ><span>${cards[1].cost} Energie</span>
-      </div>
-    </div>
-    <div class="duel-outcome" role="status">
-      <b>${esc(s.attacker.name)} holt den Punkt!</b
-      ><span
-        >${d.edge === 0
-          ? "Kein Kartenvorteil."
-          : `Kartenvorteil für Player ${d.edge > 0 ? "One" : "Two"}: +${Math.abs(d.edge)} Prozentpunkte.`}
-        Siegchance vor dem Wurf: ${d.chance}% zu
-        ${100 - d.chance}%.${game.hybrid.scores[s.attackerP] === 3
-          ? " Matchball! Ein Sieg fehlt noch."
-          : ""}</span
-      >
-    </div>`;
-}
-
+/** V3 TCG presentation helpers are defined with the battle director above. */
 
 /** A real draft wager: keep the current figure, or risk a guaranteed stronger/weaker replacement. */
 function riskPools(p){
@@ -16386,6 +16449,8 @@ function commitRiskPick(p,remote=false){
 
 /** Einstieg: alle Domänen sind geladen, bevor die Oberfläche startet. */
 $('#homeBtn').onclick = home;
+$('#langBtn').onclick = toggleLanguage;
+$('#langBtn').textContent = uiLang.toUpperCase();
 $('#rulesBtn').onclick = rules;
 $('#soundBtn').onclick = openVoice;
 ensureMusicDock();
