@@ -13171,6 +13171,11 @@ function canAct(p) {
   return online.mode === 'local' || online.role === p;
 }
 
+const V3_CARDGAME_ONLINE_ACTIONS = new Set([
+  "hybridAttach","hybridAttack","hybridEnd","hybridCaptain",
+  "hybridRetreat","hybridPromote","hybridRevive","hybridNext"
+]);
+
 function dispatch(action, payload = {}) {
   if (action === 'battleMove')
     payload = {
@@ -13184,7 +13189,15 @@ function dispatch(action, payload = {}) {
       toast('Deine letzte Aktion wird noch synchronisiert…');
       return;
     }
-    const ok = Net.sendAction(action, payload);
+    // V3 Cardgame uses the already proven battleMove transport envelope.
+    // The relay/server only needs to understand the existing action name; the host
+    // unwraps the real Cardgame command from payload.v3CardgameAction.
+    let wireAction = action, wirePayload = payload;
+    if (V3_CARDGAME_ONLINE_ACTIONS.has(action)) {
+      wireAction = 'battleMove';
+      wirePayload = { ...payload, v3CardgameAction: action };
+    }
+    const ok = Net.sendAction(wireAction, wirePayload);
     if (!ok) {
       toast(
         'Room synchronisiert gerade neu. Deine Aktion wurde nicht verloren — bitte in einem Moment erneut.',
@@ -14016,7 +14029,13 @@ class OnlineRoomClient {
         }
         if (m.aid) this.processedActions.add(m.aid);
         this.lastAck = m.aid || null;
-        handleGuestAction(m.action, m.payload || {});
+        try {
+          handleGuestAction(m.action, m.payload || {});
+        } catch (e) {
+          console.error('Player Two action failed', m.action, m.payload, e);
+        }
+        // Always publish an ACK/state after a guest command. This guarantees that
+        // Player Two can never remain permanently locked in pendingAction.
         this.sendStateNow();
         route();
         return;
@@ -14073,7 +14092,12 @@ class OnlineRoomClient {
     this.pendingAction = { aid, baseSeq: this.lastSeq, action, payload, ts: Date.now() };
     const ok = this.emitPacket({ type: 'action', aid, action, payload, guestId: this.guestId });
     if (!ok) this.pendingAction = null;
-    else this.scheduleActionRetry();
+    else {
+      this.scheduleActionRetry();
+      // Do not wait for the normal polling interval after a player click.
+      // The next sync carries pendingAction to the relay immediately when possible.
+      if (!this.relayBusy) queueMicrotask(() => this.pollRelay(this.generation));
+    }
     return ok;
   }
 
@@ -14195,8 +14219,15 @@ class OnlineRoomClient {
         : 'Verbindung unterbrochen. Wir versuchen es automatisch erneut…';
       this.setConnected(false);
       if ([400, 403, 404, 409].includes(e.status)) {
+        // Never leave Player Two permanently input-locked. A stale/rejected packet
+        // is dropped and the room is resubscribed; no F5 should be necessary.
+        if (this.role === 'guest' && this.pendingAction) {
+          console.warn('Guest action rejected by relay; releasing pending action', this.pendingAction, e);
+          this.pendingAction = null;
+        }
         this.transportReady = false;
         this.uiRefresh();
+        if (!this.manualClose) this.relayTimer=setTimeout(()=>this.retry(),600);
         return;
       }
       this.uiRefresh();
@@ -15153,7 +15184,16 @@ function unpackGameState(s) {
 }
 
 function handleGuestAction(a, p = {}) {
-  if (["hybridAttach","hybridAttack","hybridEnd","hybridCaptain","hybridRetreat","hybridPromote","hybridRevive","hybridNext"].includes(a))
+  // Cardgame commands from Player Two travel through the existing battleMove
+  // envelope so the relay path stays identical to the already-working online modes.
+  if (a === "battleMove" && V3_CARDGAME_ONLINE_ACTIONS.has(p.v3CardgameAction)) {
+    const action = p.v3CardgameAction;
+    const payload = { ...p };
+    delete payload.v3CardgameAction;
+    return handleHybridAction(action, payload, 2);
+  }
+  // Backward compatibility for rooms/tabs that still send the direct V3 action names.
+  if (V3_CARDGAME_ONLINE_ACTIONS.has(a))
     return handleHybridAction(a, p, 2);
   if (a === "battleMove") {
     if (
@@ -15908,13 +15948,20 @@ function tcgSetupHTML(h,p){
   if(h.retreatLock[p]>0)parts.push({icon:"🔒",name:L("Rückzug gesperrt","Retreat locked"),text:`${h.retreatLock[p]}`});
   return html`<div class="tcg-setup-row"><span class="tcg-zone-label">${L("SETUP / PASSIVES","SETUP / PASSIVES")}</span>${parts.length?parts.map(x=>html`<div class="tcg-setup-chip" title="${esc(x.text)}"><b>${x.icon} ${esc(x.name)}</b><small>${esc(x.text)}</small></div>`).join(""):`<small class="tcg-no-setup">${L("Noch kein aktives Setup","No active setup yet")}</small>`}</div>`;
 }
+function tcgOnlineUsable(){
+  // The relay's `connected` flag is only a peer-presence hint and can briefly flip false
+  // between polls. Cardgame controls must follow the actual transport, otherwise Player 2
+  // gets locked out after a valid action even though the room/server is still usable.
+  return online.mode === "local" || !!Net.transportReady;
+}
+
 function tcgCardPanelHTML(c,p,h,zone,viewer,compact=false) {
   if (!c) return "";
   const id = c.id, hp = h.hp[p][id] ?? tcgMaxHp(c), max = tcgMaxHp(c), energy = h.energy[p][id] || 0;
   const type = tcgType(c), meta = TCG_TYPE_META[type], ab = tcgAbility(c), retreat = tcgRetreatCost(h,p,c);
   const enemy = tcgCardById(h.active[p===1?2:1]), matchup = tcgMatchupInfo(c,enemy);
   const captain = game.captains[p] === id, ko = zone === "ko";
-  const canControl = h.stage === "main" && h.turn === p && viewer === p && !Net.pendingAction && (online.mode === "local" || online.connected);
+  const canControl = h.stage === "main" && h.turn === p && viewer === p && !Net.pendingAction && tcgOnlineUsable();
   const canAttach = canControl && !h.attachUsed && (zone === "active" || zone === "bench");
   const canPromote = h.stage === "promote" && h.pendingPromote === p && viewer === p && (zone === "bench" || zone === "reserve");
   return html`<article class="tcg-char-card type-${type.toLowerCase()} matchup-${matchup.state} ${compact?"compact":""} ${zone} ${captain?"captain":""} ${ko?"ko":""}" data-card-id="${id}">
@@ -15940,7 +15987,7 @@ function tcgCardPanelHTML(c,p,h,zone,viewer,compact=false) {
 function tcgAttackButtonsHTML(h,p,viewer) {
   const c = tcgCardById(h.active[p]); if (!c) return "";
   const attacks = tcgAttacks(c), energy = h.energy[p][c.id] || 0;
-  const can = h.stage === "main" && h.turn === p && viewer === p && !Net.pendingAction && (online.mode === "local" || online.connected);
+  const can = h.stage === "main" && h.turn === p && viewer === p && !Net.pendingAction && tcgOnlineUsable();
   return html`<div class="tcg-attacks"><div class="tcg-section-title"><span>${L("ANGRIFFE","ATTACKS")}</span><small>${L("Energie bleibt angelegt; Kosten sind Voraussetzungen.","Energy stays attached; costs are requirements.")}</small></div>
     ${attacks.map(a=>{
       const cost = tcgAttackCost(h,p,c,a), ok = can && energy >= cost;
@@ -16057,7 +16104,7 @@ class HybridBattleDirector {
     return game.hybrid;
   }
   active(p){ return tcgCardById(game.hybrid.active[p]); }
-  canAct(p, authoritative=false){ const h=game.hybrid; return h?.stage==="main"&&h.turn===p&&(authoritative||online.mode==="local"||online.role===p)&&(online.mode==="local"||online.connected)&&(!Net.pendingAction||authoritative); }
+  canAct(p, authoritative=false){ const h=game.hybrid; const transportOk=online.mode==="local"||authoritative||!!Net.transportReady; return h?.stage==="main"&&h.turn===p&&(authoritative||online.mode==="local"||online.role===p)&&transportOk&&(!Net.pendingAction||authoritative); }
   onBecomeActive(p,id,opening=false){
     const h=game.hybrid,c=tcgCardById(id); if(!h||!c)return;
     const st=tcgStatus(h,p,id),ab=tcgAbility(c);
@@ -16202,14 +16249,14 @@ class HybridBattleDirector {
         <div class="tcg-board">${tcgSideHTML(h,viewer===1?2:1,viewer,true)}<div class="tcg-center-line"><span>VS</span></div>${tcgSideHTML(h,viewer,viewer,false)}</div>
         ${h.stage==="main"?tcgTurnToolsHTML(h,viewer,viewer):""}${tcgRevivePanelHTML(h,viewer,viewer)}
         ${h.stage==="promote"?html`<div class="tcg-promote-note">${L("Wähle eine Bank- oder Reservekarte. Danach wird die Bank automatisch aus der Reserve aufgefüllt.","Choose a Bench or Reserve card. The Bench is then refilled automatically from Reserve.")}</div>`:""}
-        <p class="tcg-status" role="status">${online.mode!=="local"&&!online.connected?L("Online-Verbindung wird wiederhergestellt…","Restoring online connection…"):h.stage==="main"&&h.turn!==viewer?L("Der Gegner ist am Zug.","Opponent's turn."):h.stage==="main"&&!canViewerAct?L("Warte auf Synchronisierung…","Waiting for sync…"):""}</p>`}
+        <p class="tcg-status" role="status">${online.mode!=="local"&&!Net.transportReady?L("Online-Verbindung wird wiederhergestellt…","Restoring online connection…"):h.stage==="main"&&h.turn!==viewer?L("Der Gegner ist am Zug.","Opponent's turn."):h.stage==="main"&&!canViewerAct?L("Warte auf Synchronisierung…","Waiting for sync…"):""}</p>`}
     </section>`;
     const seen=new Set();document.querySelectorAll("[data-tcg-img]").forEach(el=>{const id=el.getAttribute("data-tcg-img");if(seen.has(id))return;seen.add(id);const c=tcgCardById(id);resolveImage(c).then(src=>document.querySelectorAll(`[data-tcg-img="${CSS.escape(id)}"]`).forEach(img=>{if(img.isConnected)img.src=src;}));});
     clearInterval(this.turnClockInterval);
     if(!story&&h.stage==="main"){ this.turnClockInterval=setInterval(tcgRefreshTurnClock,250); tcgRefreshTurnClock(); }
     if(story){this.audioKey=key;if(settings.tts)narrateBlock(tcgSceneText(scene,true),()=>{if(this.audioKey===key){const btn=$("#hybridVoice");if(btn)btn.textContent=L("ERZÄHLUNG NOCHMAL","PLAY AGAIN");}});this.updateReady();}
   }
-  updateReady(){const h=game?.hybrid;if(h?.stage!=="story")return;const p=online.role||1,btn=$("#hybridContinue"),hint=$("#hybridReady");if(btn)btn.disabled=online.mode!=="local"&&(h.ready[p]||!!Net.pendingAction||!online.connected);if(hint)hint.textContent=online.mode==="local"?L("Du kannst zuhören oder direkt weiterspielen.","Listen or continue immediately."):h.ready[p]?L("Bereit – warte auf den Gegner.","Ready — waiting for opponent."):L("Weiter geht es, wenn beide bereit sind.","Continue when both players are ready.");}
+  updateReady(){const h=game?.hybrid;if(h?.stage!=="story")return;const p=online.role||1,btn=$("#hybridContinue"),hint=$("#hybridReady");if(btn)btn.disabled=online.mode!=="local"&&(h.ready[p]||!!Net.pendingAction||!Net.transportReady);if(hint)hint.textContent=online.mode==="local"?L("Du kannst zuhören oder direkt weiterspielen.","Listen or continue immediately."):h.ready[p]?L("Bereit – warte auf den Gegner.","Ready — waiting for opponent."):L("Weiter geht es, wenn beide bereit sind.","Continue when both players are ready.");}
   toggleVoice(){const btn=$("#hybridVoice"),scene=game.hybrid.scenes[game.hybrid.scenes.length-1];if(this.paused){speechSynthesis.resume();this.paused=false;btn.textContent=L("ERZÄHLUNG PAUSIEREN","PAUSE NARRATION");}else if(window.speechSynthesis?.speaking){speechSynthesis.pause();this.paused=true;btn.textContent=L("ERZÄHLUNG FORTSETZEN","RESUME NARRATION");}else{settings.tts=true;narrateBlock(tcgSceneText(scene,true),()=>{if(btn?.isConnected)btn.textContent=L("ERZÄHLUNG NOCHMAL","PLAY AGAIN");});btn.textContent=L("ERZÄHLUNG PAUSIEREN","PAUSE NARRATION");}}
   async enrich(){if(!window.puter?.auth?.isSignedIn?.())return toast(L("Aktiviere Puter zuerst in den Einstellungen. Die lokale Geschichte bleibt verfügbar.","Enable Puter in settings first. The local story remains available."));const activeGame=game,scene=game.hybrid.scenes[game.hybrid.scenes.length-1];toast(L("Optionale KI-Langfassung wird erstellt.","Creating optional AI extended story."));scene.text=tcgSceneText(scene,false);const text=await getSceneNarration(scene,game.hybrid.scenes.length-1,battleState.nonce);if(game===activeGame&&game.hybrid.scenes.includes(scene)){scene.aiText=text;const el=$("#hybridFull");if(el)el.textContent=text;}}
   readFull(){settings.tts=true;this.paused=false;stopTTS();const scene=game.hybrid.scenes[game.hybrid.scenes.length-1];narrateBlock(scene.aiText||tcgSceneText(scene,false),()=>{const btn=$("#hybridVoice");if(btn)btn.textContent=L("ERZÄHLUNG NOCHMAL","PLAY AGAIN");});}
@@ -16249,7 +16296,7 @@ function hybridPromote(id){const h=game.hybrid;dispatch("hybridPromote",{id,turn
 function hybridRevive(id){const h=game.hybrid;dispatch("hybridRevive",{id,turnNo:h.turnNo,seed:game.seed,matchNo:game.matchNo});}
 function hybridContinue(){stopTTS();const h=game.hybrid;dispatch("hybridNext",{turnNo:h.turnNo,seed:game.seed,matchNo:game.matchNo});}
 function handleHybridAction(action,p,player){
-  const h=game?.hybrid;if(!h||game.phase!=="battle"||(online.mode!=="local"&&!online.connected)||p.seed!==game.seed||p.matchNo!==game.matchNo)return false;
+  const h=game?.hybrid;if(!h||game.phase!=="battle"||p.seed!==game.seed||p.matchNo!==game.matchNo)return false;
   if(action!=="hybridNext"&&p.turnNo!==h.turnNo)return false;
   // Online host is authoritative: guest (Player 2) actions must be allowed to mutate the host state.
   // The UI still cannot control the other player because this flag is only set while processing a received guest packet.
